@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Ordermanager_Logic
 {
     public class OrderCollection
     {
-        IOrderProvider x;
+        private IOrderProvider provider;
 
         public OrderCollection(IOrderProvider q)
         {
-            x = q;
+            provider = q;
         }
 
 
         public List<Order> GetAllOrders()
         {
-            return x.GetAllOrders();
+            return provider.GetAllOrders();
         }
     }
 }

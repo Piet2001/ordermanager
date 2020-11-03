@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Ordermanager_DAL\Ordermanager_DAL.csproj" />
+  </ItemGroup>
+
 </Project>

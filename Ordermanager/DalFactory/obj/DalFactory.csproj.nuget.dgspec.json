@@ -1,17 +1,76 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\DalFactory\\DalFactory.csproj": {}
+    "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\DalFactory\\DalFactory.csproj": {}
   },
   "projects": {
-    "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\DalFactory\\DalFactory.csproj": {
+    "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\DalFactory\\DalFactory.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\DalFactory\\DalFactory.csproj",
+        "projectUniqueName": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\DalFactory\\DalFactory.csproj",
         "projectName": "DalFactory",
-        "projectPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\DalFactory\\DalFactory.csproj",
+        "projectPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\DalFactory\\DalFactory.csproj",
         "packagesPath": "C:\\Users\\twanb\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\DalFactory\\obj\\",
+        "outputPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\DalFactory\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\twanb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager_DAL\\Ordermanager_DAL.csproj": {
+                "projectPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager_DAL\\Ordermanager_DAL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager\\Ordermanager_Logic.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager\\Ordermanager_Logic.csproj",
+        "projectName": "Ordermanager_Logic",
+        "projectPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager\\Ordermanager_Logic.csproj",
+        "packagesPath": "C:\\Users\\twanb\\.nuget\\packages\\",
+        "outputPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,6 +89,65 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager_DAL\\Ordermanager_DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager_DAL\\Ordermanager_DAL.csproj",
+        "projectName": "Ordermanager_DAL",
+        "projectPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager_DAL\\Ordermanager_DAL.csproj",
+        "packagesPath": "C:\\Users\\twanb\\.nuget\\packages\\",
+        "outputPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager_DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\twanb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager\\Ordermanager_Logic.csproj": {
+                "projectPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager\\Ordermanager_Logic.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

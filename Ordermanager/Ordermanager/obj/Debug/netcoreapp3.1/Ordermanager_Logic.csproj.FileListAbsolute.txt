@@ -1,0 +1,9 @@
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\Ordermanager\bin\Debug\netcoreapp3.1\Ordermanager_Logic.deps.json
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\Ordermanager\bin\Debug\netcoreapp3.1\Ordermanager_Logic.dll
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\Ordermanager\bin\Debug\netcoreapp3.1\Ordermanager_Logic.pdb
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\Ordermanager\obj\Debug\netcoreapp3.1\Ordermanager_Logic.csprojAssemblyReference.cache
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\Ordermanager\obj\Debug\netcoreapp3.1\Ordermanager_Logic.AssemblyInfoInputs.cache
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\Ordermanager\obj\Debug\netcoreapp3.1\Ordermanager_Logic.AssemblyInfo.cs
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\Ordermanager\obj\Debug\netcoreapp3.1\Ordermanager_Logic.csproj.CoreCompileInputs.cache
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\Ordermanager\obj\Debug\netcoreapp3.1\Ordermanager_Logic.dll
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\Ordermanager\obj\Debug\netcoreapp3.1\Ordermanager_Logic.pdb

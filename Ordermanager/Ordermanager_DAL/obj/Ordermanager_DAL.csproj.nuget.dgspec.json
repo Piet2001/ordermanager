@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\Ordermanager_DAL\\Ordermanager_DAL.csproj": {}
+    "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager_DAL\\Ordermanager_DAL.csproj": {}
   },
   "projects": {
-    "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\Ordermanager\\Ordermanager_Logic.csproj": {
+    "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager\\Ordermanager_Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\Ordermanager\\Ordermanager_Logic.csproj",
+        "projectUniqueName": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager\\Ordermanager_Logic.csproj",
         "projectName": "Ordermanager_Logic",
-        "projectPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\Ordermanager\\Ordermanager_Logic.csproj",
+        "projectPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager\\Ordermanager_Logic.csproj",
         "packagesPath": "C:\\Users\\twanb\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\Ordermanager\\obj\\",
+        "outputPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -59,14 +59,14 @@
         }
       }
     },
-    "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\Ordermanager_DAL\\Ordermanager_DAL.csproj": {
+    "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager_DAL\\Ordermanager_DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\Ordermanager_DAL\\Ordermanager_DAL.csproj",
+        "projectUniqueName": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager_DAL\\Ordermanager_DAL.csproj",
         "projectName": "Ordermanager_DAL",
-        "projectPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\Ordermanager_DAL\\Ordermanager_DAL.csproj",
+        "projectPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager_DAL\\Ordermanager_DAL.csproj",
         "packagesPath": "C:\\Users\\twanb\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\Ordermanager_DAL\\obj\\",
+        "outputPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager_DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -85,8 +85,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\Ordermanager\\Ordermanager_Logic.csproj": {
-                "projectPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\Ordermanager\\Ordermanager\\Ordermanager_Logic.csproj"
+              "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager\\Ordermanager_Logic.csproj": {
+                "projectPath": "D:\\OneDrive - Office 365 Fontys\\Fontys FHICT\\2021nj - S2 - DB01M\\Eigen Projecten\\Git\\ordermanager\\OrderManager\\Ordermanager\\Ordermanager_Logic.csproj"
               }
             }
           }
