@@ -15,9 +15,9 @@ namespace Ordermanager_Logic
             this.price = price;
         }
 
-        public void UpdateProduct()
+        public void UpdatePrice(double newprice)
         {
-            // TO DO
+            price = newprice;
         }
     }
 }
