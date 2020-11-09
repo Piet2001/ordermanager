@@ -19,5 +19,14 @@ namespace Ordermanager_Logic
         {
             price = newprice;
         }
+
+        public override string ToString()
+        {
+            string result;
+            result = "Name: " + name + "\n";
+            result += "Price: " + price;
+
+            return result;
+        }
     }
 }

@@ -17,5 +17,18 @@ namespace Ordermanager_Logic
         {
             this.status = newstatus;
         }
+
+        public override string ToString()
+        {
+            string result;
+            result = "Ordernummer: " + orderNumber + "\n";
+            result += "Orderdate: " + orderDate + "\n";
+            result += "DeliveryDate: " + deliveryDate + "\n";
+            result += "Status: " + status + "\n";
+            result += "Customer: \n" + customer + "\n";
+            result += "Product: \n" + product + "\n";
+
+            return result;
+        }
     }
 }

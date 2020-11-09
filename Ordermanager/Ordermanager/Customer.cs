@@ -14,5 +14,14 @@ namespace Ordermanager_Logic
             this.name = name;
             this.adress = adress;
         }
+
+        public override string ToString()
+        {
+            string result;
+            result = "Name: " + name + "\n";
+            result += "Adress: " + adress;
+
+            return result;
+        }
     }
 }
