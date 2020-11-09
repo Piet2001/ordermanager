@@ -12,6 +12,15 @@ namespace Ordermanager_Logic
         private Customer customer;
         private Product product;
 
+        public Order(int orderNumber, DateTime orderDate, DateTime deliveryDate, Status status, Customer customer, Product product)
+        {
+            this.orderNumber = orderNumber;
+            this.orderDate = orderDate;
+            this.deliveryDate = deliveryDate;
+            this.status = status;
+            this.customer = customer;
+            this.product = product;
+        }
 
         public void updateStatus(Status newstatus)
         {
