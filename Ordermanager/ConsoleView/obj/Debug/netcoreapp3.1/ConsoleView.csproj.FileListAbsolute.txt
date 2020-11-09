@@ -1,0 +1,16 @@
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\bin\Debug\netcoreapp3.1\ConsoleView.exe
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\bin\Debug\netcoreapp3.1\ConsoleView.deps.json
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\bin\Debug\netcoreapp3.1\ConsoleView.runtimeconfig.json
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\bin\Debug\netcoreapp3.1\ConsoleView.runtimeconfig.dev.json
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\bin\Debug\netcoreapp3.1\ConsoleView.dll
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\bin\Debug\netcoreapp3.1\ConsoleView.pdb
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\obj\Debug\netcoreapp3.1\ConsoleView.csprojAssemblyReference.cache
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\obj\Debug\netcoreapp3.1\ConsoleView.AssemblyInfoInputs.cache
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\obj\Debug\netcoreapp3.1\ConsoleView.AssemblyInfo.cs
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\obj\Debug\netcoreapp3.1\ConsoleView.csproj.CoreCompileInputs.cache
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\obj\Debug\netcoreapp3.1\ConsoleView.dll
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\obj\Debug\netcoreapp3.1\ConsoleView.pdb
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\obj\Debug\netcoreapp3.1\ConsoleView.genruntimeconfig.cache
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\bin\Debug\netcoreapp3.1\Ordermanager_Logic.dll
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\bin\Debug\netcoreapp3.1\Ordermanager_Logic.pdb
+D:\OneDrive - Office 365 Fontys\Fontys FHICT\2021nj - S2 - DB01M\Eigen Projecten\Git\ordermanager\OrderManager\ConsoleView\obj\Debug\netcoreapp3.1\ConsoleView.csproj.CopyComplete
