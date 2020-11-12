@@ -9,7 +9,7 @@ namespace ConsoleView
         static void Main(string[] args)
         {
 
-            Order order = new Order(123456, new DateTime(2020,11,9),new DateTime(2020,12,1), Status.WachtenOpOnderdelen, new Customer("Twan", "Teststraat 1, 1234AB, Teststad"), new Product("Product01", 12.36) );
+            Order order = new Order(123456, new DateTime(2020,11,9),new DateTime(2020,12,1), Status.WachtenOpOnderdelen, new Customer("Test Persoon", "Teststraat 1, 1234AB, Teststad"), new Product("Product01", 12.36) );
 
             Console.WriteLine("Output: \n ");
             Console.WriteLine(order);

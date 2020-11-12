@@ -22,16 +22,16 @@ namespace Ordermanager_Logic
             this.product = product;
         }
 
-        public void updateStatus(Status newstatus)
+        public void updateStatus(Status status)
         {
-            this.status = newstatus;
+            this.status = status;
         }
 
         public override string ToString()
         {
             string result;
-            result = "Ordernummer: " + orderNumber + "\n";
-            result += "Orderdate: " + orderDate + "\n";
+            result = "OrderNummer: " + orderNumber + "\n";
+            result += "OrderDate: " + orderDate + "\n";
             result += "DeliveryDate: " + deliveryDate + "\n";
             result += "Status: " + status + "\n";
             result += "Customer: \n" + customer + "\n";

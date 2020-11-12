@@ -1,6 +1,7 @@
 ﻿using Ordermanager_Logic;
 using System;
 using System.Collections.Generic;
+using Ordermanager_Logic.Interfaces;
 
 namespace Ordermanager_DAL
 {
@@ -9,6 +10,11 @@ namespace Ordermanager_DAL
         public List<Order> GetAllOrders()
         {
             throw new NotImplementedException();
+        }
+
+        public void AddOrder(Order order)
+        {
+
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Ordermanager_Logic;
+using Ordermanager_Logic.Interfaces;
 
 namespace Ordermanager_DAL
 {
@@ -10,6 +11,11 @@ namespace Ordermanager_DAL
         public List<Customer> GetAllCustomers()
         {
             throw new NotImplementedException();
+        }
+
+        public void addCustomer(Customer customer)
+        {
+
         }
     }
 }

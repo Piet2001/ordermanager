@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Ordermanager_Logic
+namespace Ordermanager_Logic.Interfaces
 {
     public interface IOrderProvider
     {
