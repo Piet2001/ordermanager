@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Ordermanager_Logic.Dto;
 using Ordermanager_Logic.Interfaces;
 
 namespace Ordermanager_Logic.Collections
@@ -13,7 +14,7 @@ namespace Ordermanager_Logic.Collections
         }
 
 
-        public List<Product> GetAllProducts()
+        public List<ProductDto> GetAllProducts()
         {
             return _provider.GetAllProducts();
         }
