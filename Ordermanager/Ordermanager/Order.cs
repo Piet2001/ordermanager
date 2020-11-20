@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http.Headers;
+using Ordermanager_Logic.Dto;
 
 namespace Ordermanager_Logic
 {
@@ -20,6 +21,16 @@ namespace Ordermanager_Logic
             this.status = status;
             this.customer = customer;
             this.product = product;
+        }
+
+        public Order(OrderDto neworder)
+        {
+            orderNumber = neworder.OrderNr;
+            orderDate = neworder.OrderDate;
+            deliveryDate = neworder.DeliveryDate;
+            status = neworder.Status;
+            customer = neworder.Customer;
+            product = neworder.Product;
         }
 
         public void updateStatus(Status status)

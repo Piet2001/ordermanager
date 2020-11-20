@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
+using Ordermanager_DAL;
 using Ordermanager_Logic;
+using Ordermanager_Logic.Dto;
 
 namespace ConsoleView
 {
@@ -8,11 +11,16 @@ namespace ConsoleView
     {
         static void Main(string[] args)
         {
-
-            Order order = new Order(123456, new DateTime(2020,11,9),new DateTime(2020,12,1), Status.WachtenOpOnderdelen, new Customer("Test Persoon", "Teststraat 1, 1234AB, Teststad"), new Product("Product01", 12.36) );
+            OrderDal dal = new OrderDal();
+            List<OrderDto> orders = dal.GetAllOrders();
 
             Console.WriteLine("Output: \n ");
-            Console.WriteLine(order);
+
+            foreach (var orderDto in orders)
+            {
+                Order order = new Order(orderDto);
+                Console.WriteLine(order);
+            }
             Console.ReadLine();
         }
     }
