@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net.Http.Headers;
 using Ordermanager_Logic.Dto;
 
 namespace Ordermanager_Logic
@@ -33,9 +32,9 @@ namespace Ordermanager_Logic
             product = neworder.Product;
         }
 
-        public void updateStatus(Status status)
+        public void UpdateStatus(Status newStatus)
         {
-            this.status = status;
+            this.status = newStatus;
         }
 
         public override string ToString()

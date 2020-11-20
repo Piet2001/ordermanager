@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Ordermanager_DAL;
 using Ordermanager_Logic;
@@ -7,7 +6,7 @@ using Ordermanager_Logic.Dto;
 
 namespace ConsoleView
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
