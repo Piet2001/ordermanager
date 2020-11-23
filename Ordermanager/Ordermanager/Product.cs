@@ -2,7 +2,7 @@
 {
     public class Product
     {
-        private string name;
+        public string name { get; }
         private double price;
 
         public Product(string name, double price)

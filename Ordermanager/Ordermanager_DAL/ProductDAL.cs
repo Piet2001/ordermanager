@@ -37,7 +37,7 @@ namespace Ordermanager_DAL
 
         public void AddProduct(Product product)
         {
-
+           
         }
     }
 }

@@ -1,0 +1,32 @@
+﻿@model List<OrderViewModel>
+@{
+    ViewData["Title"] = "All Orders";
+}
+
+<div class="text-center">
+    <h1 class="display-4">This are all the orders in the system!</h1>
+    <p>
+        <table border="1">
+            <tr>
+                <th>OrderNr</th>
+                <th>Product</th>
+                <th>Order Date</th>
+                <th>Delivery Date</th>
+                <th>Customer</th>
+                <th>Status</th>
+            </tr>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <th>@order.OrderNr</th>
+                    <th>@order.Product.name</th>
+                    <th>@order.OrderDate.ToString("dd'/'MM'/'yyyy")</th>
+                    <th>@order.DeliveryDate.ToString("dd'/'MM'/'yyyy")</th>
+                    <th>@order.Customer.name</th>
+                    <th>@order.Status</th>
+                </tr>
+            }
+        </table>
+
+    </p>
+</div>
