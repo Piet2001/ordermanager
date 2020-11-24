@@ -18,5 +18,6 @@ namespace Ordermanager_Logic.Collections
         {
             return _provider.GetAllCustomers();
         }
+
     }
 }

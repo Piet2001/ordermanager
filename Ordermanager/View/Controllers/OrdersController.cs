@@ -4,6 +4,7 @@ using Ordermanager_Logic.Collections;
 using Ordermanager_Logic.Dto;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using View.Models;
@@ -36,9 +37,18 @@ namespace View.Controllers
         }
 
         // GET: OrdersController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Order(int id)
         {
-            return View();
+            OrderDto order = orderCollection.GetOrderByID(id);
+            OrderViewModel orderview = new OrderViewModel();
+            orderview.OrderNr = order.OrderNr;
+            orderview.OrderDate = order.OrderDate;
+            orderview.DeliveryDate = order.DeliveryDate;
+            orderview.Customer = order.Customer;
+            orderview.Product = order.Product;
+            orderview.Status = order.Status;
+
+            return View(orderview);
         }
 
         // GET: OrdersController/Create
@@ -102,6 +112,12 @@ namespace View.Controllers
             {
                 return View();
             }
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

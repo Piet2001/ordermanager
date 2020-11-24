@@ -6,5 +6,7 @@ namespace Ordermanager_Logic.Interfaces
     public interface IOrderProvider
     {
         IReadOnlyCollection<OrderDto> GetAllOrders();
+
+        OrderDto GetOrderByID(int id);
     }
 }

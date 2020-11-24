@@ -3,7 +3,7 @@
     public class Product
     {
         public string name { get; }
-        private double price;
+        public double price { get; private set; }
 
         public Product(string name, double price)
         {

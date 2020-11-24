@@ -30,13 +30,46 @@ namespace Ordermanager_DAL
                             OrderDate = reader.GetDateTime(3),
                             DeliveryDate = reader.GetDateTime(4),
                             Customer = new Customer(reader.GetString(5), reader.GetString(6)),
-                            Status = (Status) reader.GetInt32(7)
+                            Status = (Status)reader.GetInt32(7)
                         };
                         orders.Add(order);
                     }
                 }
             }
             return orders.AsReadOnly();
+        }
+
+        public OrderDto GetOrderByID(int id)
+        {
+            OrderDto order = new OrderDto();
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                MySqlCommand query = conn.CreateCommand();
+                conn.Open();
+                query.CommandText =
+                    @"SELECT `order`.OrderNr, product.Name, product.Price, `order`.Orderdate, `order`.DeliveryDate, customer.Name, customer.Adress, `order`.`Status` 
+                                    FROM `order`, product, customer 
+                                    WHERE order.OrderNr = @OrderID 
+                                    AND order.ProductID = product.ID 
+                                    AND order.CustomerID = customer.ID";
+                query.Parameters.AddWithValue("OrderID", id);
+
+                var reader = query.ExecuteReader();
+                while (reader.Read())
+                {
+
+
+                    order.OrderNr = reader.GetInt32(0);
+                    order.Product = new Product(reader.GetString(1), reader.GetDouble(2));
+                    order.OrderDate = reader.GetDateTime(3);
+                    order.DeliveryDate = reader.GetDateTime(4);
+                    order.Customer = new Customer(reader.GetString(5), reader.GetString(6));
+                    order.Status = (Status)reader.GetInt32(7);
+
+                }
+            }
+
+            return order;
         }
 
         public void AddOrder(Order order)

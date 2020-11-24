@@ -1,0 +1,27 @@
+﻿@model OrderViewModel
+@{
+    ViewData["Title"] = "Order: "+ @Model.OrderNr;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Here is your order: @Model.OrderNr</h1>
+
+</div>
+<div class="text-left">
+    <h3>The Details about order @Model.OrderNr:</h3>
+    <p>
+        Orderdate: @Model.OrderDate <br/>
+        Planned DiliveryDate: @Model.DeliveryDate<br />
+        Actual Status @Model.Status<br />
+    </p>
+    <h3>Product Info:</h3>
+    <p>
+        Product: @Model.Product.name<br />
+        Price: @Model.Product.price<br />
+    </p>
+    <h3>Customer Info:</h3>
+    <p>
+        Product: @Model.Customer.name<br />
+        Price: @Model.Customer.adress<br />
+    </p>
+</div>

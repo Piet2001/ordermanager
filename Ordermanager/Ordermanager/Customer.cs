@@ -3,7 +3,7 @@
     public class Customer
     {
         public string name { get; }
-        private string adress;
+        public string adress { get; }
 
         public Customer(string name, string adress)
         {

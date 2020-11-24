@@ -17,5 +17,10 @@ namespace Ordermanager_Logic.Collections
         {
             return _provider.GetAllOrders();
         }
+
+        public OrderDto GetOrderByID(int id)
+        {
+            return _provider.GetOrderByID(id);
+        }
     }
 }
