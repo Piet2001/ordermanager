@@ -11,7 +11,7 @@ namespace ConsoleView
         static void Main(string[] args)
         {
             OrderDal dal = new OrderDal();
-            List<OrderDto> orders = dal.GetAllOrders();
+            IReadOnlyCollection<OrderDto> orders = dal.GetAllOrders();
 
             Console.WriteLine("Output: \n ");
 
