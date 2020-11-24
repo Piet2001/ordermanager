@@ -14,7 +14,7 @@ namespace View.Controllers
     {
         OrderCollection orderCollection = new OrderCollection(new Ordermanager_DAL.OrderDal());
 
-        // GET: TestController
+        // GET: OrdersController
         public ActionResult Index()
         {
             IReadOnlyCollection<OrderDto> orders = orderCollection.GetAllOrders();
@@ -35,19 +35,19 @@ namespace View.Controllers
             return View(orderModel);
         }
 
-        // GET: TestController/Details/5
+        // GET: OrdersController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: TestController/Create
+        // GET: OrdersController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: TestController/Create
+        // POST: OrdersController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -62,13 +62,13 @@ namespace View.Controllers
             }
         }
 
-        // GET: TestController/Edit/5
+        // GET: OrdersController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: TestController/Edit/5
+        // POST: OrdersController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -83,13 +83,13 @@ namespace View.Controllers
             }
         }
 
-        // GET: TestController/Delete/5
+        // GET: OrdersController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: TestController/Delete/5
+        // POST: OrdersController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
