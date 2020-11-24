@@ -17,7 +17,7 @@ namespace View.Controllers
         // GET: TestController
         public ActionResult Index()
         {
-            List<OrderDto> orders = orderCollection.GetAllOrders();
+            IReadOnlyCollection<OrderDto> orders = orderCollection.GetAllOrders();
             List<OrderViewModel> orderModel = new List<OrderViewModel>();
             foreach (var order in orders)
             {

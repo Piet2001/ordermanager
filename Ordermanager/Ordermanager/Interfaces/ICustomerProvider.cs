@@ -5,6 +5,6 @@ namespace Ordermanager_Logic.Interfaces
 {
     public interface ICustomerProvider
     {
-        List<CustomerDto> GetAllCustomers();
+        IReadOnlyCollection<CustomerDto> GetAllCustomers();
     }
 }

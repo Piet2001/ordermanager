@@ -10,7 +10,7 @@ namespace Ordermanager_DAL
     {
         private readonly string connectionString = "Server=127.0.0.1;Database=ordermanager;Uid=root;Pwd=;";
 
-        public List<OrderDto> GetAllOrders()
+        public IReadOnlyCollection<OrderDto> GetAllOrders()
         {
             List<OrderDto> orders = new List<OrderDto>();
 
@@ -36,7 +36,7 @@ namespace Ordermanager_DAL
                     }
                 }
             }
-            return orders;
+            return orders.AsReadOnly();
         }
 
         public void AddOrder(Order order)

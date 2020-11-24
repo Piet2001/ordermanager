@@ -13,7 +13,7 @@ namespace Ordermanager_Logic.Collections
             _provider = provider;
         }
 
-        public List<OrderDto> GetAllOrders()
+        public IReadOnlyCollection<OrderDto> GetAllOrders()
         {
             return _provider.GetAllOrders();
         }

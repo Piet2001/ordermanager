@@ -11,7 +11,7 @@ namespace Ordermanager_DAL
     {
         private readonly string connectionString = "Server=127.0.0.1;Database=ordermanager;Uid=root;Pwd=;";
 
-        public List<CustomerDto> GetAllCustomers()
+        public IReadOnlyCollection<CustomerDto> GetAllCustomers()
         {
             List<CustomerDto> customers = new List<CustomerDto>();
 
