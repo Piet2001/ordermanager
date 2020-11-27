@@ -1,15 +1,15 @@
-﻿using Ordermanager_Logic;
-using System;
+﻿using System;
+using Ordermanager_Logic;
 
 namespace View.Models
 {
-    public class OrderViewModel
+    public class OrderModel
     {
         public int OrderNr { get; set; }
-        public string Product { get; set; }
+        public Product Product { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime DeliveryDate { get; set; }
-        public string Customer { get; set; }
+        public Customer Customer { get; set; }
         public Status Status { get; set; }
     }
 }

@@ -2,25 +2,25 @@
 {
     public class Product
     {
-        public string name { get; }
-        public double price { get; private set; }
+        public string Name { get; }
+        public double Price { get; private set; }
 
         public Product(string name, double price)
         {
-            this.name = name;
-            this.price = price;
+            this.Name = name;
+            this.Price = price;
         }
 
         public void UpdatePrice(double newprice)
         {
-            price = newprice;
+            Price = newprice;
         }
 
         public override string ToString()
         {
             string result;
-            result = "Name: " + name + "\n";
-            result += "Price: " + price;
+            result = "Name: " + Name + "\n";
+            result += "Price: " + Price;
 
             return result;
         }

@@ -8,5 +8,7 @@ namespace Ordermanager_Logic.Interfaces
         IReadOnlyCollection<OrderDto> GetAllOrders();
 
         OrderDto GetOrderByID(int id);
+        void AddOrder(CreateDto order);
+        void UpdateStatus(UpdateDto order);
     }
 }

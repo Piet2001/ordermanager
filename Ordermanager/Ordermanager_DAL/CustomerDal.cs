@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using Ordermanager_Logic;
 using Ordermanager_Logic.Dto;

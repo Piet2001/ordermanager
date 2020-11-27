@@ -6,17 +6,17 @@ namespace Ordermanager_Logic.Collections
 {
     public class ProductCollection
     {
-        private readonly IProductProvider _provider;
+        private readonly IProductProvider provider;
 
         public ProductCollection(IProductProvider provider)
         {
-            _provider = provider;
+            this.provider = provider;
         }
 
 
         public List<ProductDto> GetAllProducts()
         {
-            return _provider.GetAllProducts();
+            return provider.GetAllProducts();
         }
     }
 }

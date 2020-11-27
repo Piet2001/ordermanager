@@ -18,9 +18,19 @@ namespace Ordermanager_Logic.Collections
             return _provider.GetAllOrders();
         }
 
-        public OrderDto GetOrderByID(int id)
+        public OrderDto GetOrderById(int id)
         {
             return _provider.GetOrderByID(id);
+        }
+
+        public void AddOrder(CreateDto dto)
+        {
+            _provider.AddOrder(dto);
+        }
+
+        public void UpdateStatus(UpdateDto update)
+        {
+            _provider.UpdateStatus(update);
         }
     }
 }

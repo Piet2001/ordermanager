@@ -1,32 +1,65 @@
-﻿@model List<OrderViewModel>
+﻿@model IEnumerable<View.Models.OrderViewModel>
+
 @{
-    ViewData["Title"] = "All Orders";
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">This are all the orders in the system!</h1>
-    <p>
-        <table border="1">
-            <tr>
-                <th>OrderNr</th>
-                <th>Product</th>
-                <th>Order Date</th>
-                <th>Delivery Date</th>
-                <th>Customer</th>
-                <th>Status</th>
-            </tr>
-            @foreach (var order in Model)
-            {
-                <tr>
-                    <th>@order.OrderNr</th>
-                    <th>@order.Product.name</th>
-                    <th>@order.OrderDate.ToString("dd'/'MM'/'yyyy")</th>
-                    <th>@order.DeliveryDate.ToString("dd'/'MM'/'yyyy")</th>
-                    <th>@order.Customer.name</th>
-                    <th>@order.Status</th>
-                </tr>
-            }
-        </table>
+<h1>Index</h1>
 
-    </p>
-</div>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderNr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderNr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.OrderNr }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.OrderNr  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.OrderNr  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

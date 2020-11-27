@@ -2,22 +2,22 @@
 {
     public class Customer
     {
-        public string name { get; }
-        public string adress { get; }
+        public string Name { get; }
+        public string Adress { get; }
 
         public Customer(string name, string adress)
         {
-            this.name = name;
-            this.adress = adress;
+            this.Name = name;
+            this.Adress = adress;
         }
 
-        public override string ToString()
-        {
-            string result;
-            result = "Name: " + name + "\n";
-            result += "Adress: " + adress;
+        //public override string ToString()
+        //{
+        //    string result;
+        //    result = "Name: " + name + "\n";
+        //    result += "Adress: " + adress;
 
-            return result;
-        }
+        //    return result;
+        //}
     }
 }

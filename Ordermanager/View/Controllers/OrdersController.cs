@@ -1,20 +1,16 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Ordermanager_Logic.Collections;
 using Ordermanager_Logic.Dto;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using View.Models;
 
 namespace View.Controllers
 {
     public class OrdersController : Controller
     {
-        OrderCollection orderCollection = new OrderCollection(new Ordermanager_DAL.OrderDal());
+        private readonly OrderCollection orderCollection = new OrderCollection(new Ordermanager_DAL.OrderDal());
 
         // GET: OrdersController
         public ActionResult Index()
@@ -26,10 +22,10 @@ namespace View.Controllers
                 OrderViewModel input = new OrderViewModel()
                 {
                     OrderNr = order.OrderNr,
-                    Product = order.Product,
+                    Product = order.Product.Name,
                     OrderDate = order.OrderDate,
                     DeliveryDate = order.DeliveryDate,
-                    Customer = order.Customer,
+                    Customer = order.Customer.Name,
                     Status = order.Status
                 };
                 orderModel.Add(input);
@@ -38,15 +34,15 @@ namespace View.Controllers
         }
 
         // GET: OrdersController/Details/5
-        public ActionResult Order(int id)
+        public ActionResult Details(int id)
         {
-            OrderDto order = orderCollection.GetOrderByID(id);
+            OrderDto order = orderCollection.GetOrderById(id);
             OrderViewModel orderview = new OrderViewModel();
             orderview.OrderNr = order.OrderNr;
             orderview.OrderDate = order.OrderDate;
             orderview.DeliveryDate = order.DeliveryDate;
-            orderview.Customer = order.Customer;
-            orderview.Product = order.Product;
+            orderview.Customer = order.Customer.Name;
+            orderview.Product = order.Product.Name;
             orderview.Status = order.Status;
 
             if (orderview.Customer == null)
@@ -66,10 +62,11 @@ namespace View.Controllers
         // POST: OrdersController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(CreateDto dto)
         {
             try
             {
+                orderCollection.AddOrder(dto);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -87,31 +84,11 @@ namespace View.Controllers
         // POST: OrdersController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(UpdateDto update)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: OrdersController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: OrdersController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
+                orderCollection.UpdateStatus(update);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -124,6 +101,11 @@ namespace View.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Delete(object id)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

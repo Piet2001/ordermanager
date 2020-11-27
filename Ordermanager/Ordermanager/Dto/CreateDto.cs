@@ -1,15 +1,14 @@
-﻿using Ordermanager_Logic;
-using System;
+﻿using System;
 
-namespace View.Models
+namespace Ordermanager_Logic.Dto
 {
-    public class OrderViewModel
+    public class CreateDto
     {
         public int OrderNr { get; set; }
-        public string Product { get; set; }
+        public int Product { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime DeliveryDate { get; set; }
-        public string Customer { get; set; }
+        public int Customer { get; set; }
         public Status Status { get; set; }
     }
 }
