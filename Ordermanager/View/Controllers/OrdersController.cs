@@ -4,6 +4,7 @@ using Ordermanager_Logic.Collections;
 using Ordermanager_Logic.Dto;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -47,6 +48,11 @@ namespace View.Controllers
             orderview.Customer = order.Customer;
             orderview.Product = order.Product;
             orderview.Status = order.Status;
+
+            if (orderview.Customer == null)
+            {
+                throw new DataException("Order not found");
+            }
 
             return View(orderview);
         }
