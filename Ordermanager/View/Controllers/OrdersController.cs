@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Ordermanager_Logic.Collections;
 using Ordermanager_Logic.Dto;
 using System.Collections.Generic;
@@ -16,6 +17,10 @@ namespace View.Controllers
         public ActionResult Index()
         {
             IReadOnlyCollection<OrderDto> orders = orderCollection.GetAllOrders();
+            if (orders.Count == 0)
+            {
+                throw new Exception("Geen gegevens gevonden.");
+            }
             List<OrderViewModel> orderModel = new List<OrderViewModel>();
             foreach (var order in orders)
             {
@@ -98,7 +103,7 @@ namespace View.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public ActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
@@ -109,11 +114,11 @@ namespace View.Controllers
             IReadOnlyCollection<OrderDto> orders = orderCollection.GetOnStatus(id);
             if (id > 0 && id < 6)
             {
-                ViewBag.Message = "Status " + id;
+                ViewBag.Message = "Status " + id + "(" + orders.Count + ")";
             }
             else
             {
-                ViewBag.Message = "Onbekende Status";
+                ViewBag.Message = "Onbekende Status" + "(" + orders.Count + ")";
             }
 
             List<OrderViewModel> orderModel = new List<OrderViewModel>();

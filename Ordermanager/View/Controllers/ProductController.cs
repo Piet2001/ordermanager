@@ -4,15 +4,37 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ordermanager_Logic.Collections;
+using Ordermanager_Logic.Dto;
+using View.Models;
 
 namespace View.Controllers
 {
     public class ProductController : Controller
     {
+        private readonly ProductCollection orderCollection = new ProductCollection(new Ordermanager_DAL.ProductDal());
+
         // GET: ProductController
         public ActionResult Index()
         {
-            return View();
+            IReadOnlyCollection<ProductDto> products = orderCollection.GetAllProducts();
+            if (products.Count == 0)
+            {
+                throw new Exception("Geen gegevens gevonden.");
+            }
+            List<ProductViewModel> productView = new List<ProductViewModel>();
+            foreach (var product in products)
+            {
+                ProductViewModel input = new ProductViewModel()
+                {
+                    Id = product.Id,
+                    Name = product.Name,
+                    Price = product.Price
+
+                };
+                productView.Add(input);
+            }
+            return View(productView);
         }
 
         // GET: ProductController/Details/5

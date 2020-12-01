@@ -3,18 +3,17 @@ using MySql.Data.MySqlClient;
 using Ordermanager_Logic;
 using Ordermanager_Logic.Dto;
 using Ordermanager_Logic.Interfaces;
+using static Ordermanager_DAL.Connection;
 
 namespace Ordermanager_DAL
 {
     class CustomerDal : ICustomerProvider
     {
-        private readonly string connectionString = "Server=127.0.0.1;Database=ordermanager;Uid=root;Pwd=;";
-
-        public IReadOnlyCollection<CustomerDto> GetAllCustomers()
+       public IReadOnlyCollection<CustomerDto> GetAllCustomers()
         {
             List<CustomerDto> customers = new List<CustomerDto>();
 
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = Conn())
             {
                 using (MySqlCommand query = new MySqlCommand("SELECT customer.Name, customer.Adress FROM customer", conn))
                 {
