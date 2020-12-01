@@ -103,9 +103,34 @@ namespace View.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Delete(object id)
+        // GET: OrdersController/Status/5
+        public ActionResult Status(int id)
         {
-            throw new System.NotImplementedException();
+            IReadOnlyCollection<OrderDto> orders = orderCollection.GetOnStatus(id);
+            if (id > 0 && id < 6)
+            {
+                ViewBag.Message = "Status " + id;
+            }
+            else
+            {
+                ViewBag.Message = "Onbekende Status";
+            }
+
+            List<OrderViewModel> orderModel = new List<OrderViewModel>();
+            foreach (var order in orders)
+            {
+                OrderViewModel input = new OrderViewModel()
+                {
+                    OrderNr = order.OrderNr,
+                    Product = order.Product.Name,
+                    OrderDate = order.OrderDate,
+                    DeliveryDate = order.DeliveryDate,
+                    Customer = order.Customer.Name,
+                    Status = order.Status
+                };
+                orderModel.Add(input);
+            }
+            return View(orderModel);
         }
     }
 }

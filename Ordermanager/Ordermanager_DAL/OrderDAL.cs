@@ -32,7 +32,7 @@ namespace Ordermanager_DAL
                             OrderDate = reader.GetDateTime(3),
                             DeliveryDate = reader.GetDateTime(4),
                             Customer = new Customer(reader.GetString(5), reader.GetString(6)),
-                            Status = (Status) reader.GetInt32(7)
+                            Status = (Status)reader.GetInt32(7)
                         };
                         orders.Add(order);
                     }
@@ -65,7 +65,7 @@ namespace Ordermanager_DAL
                     order.OrderDate = reader.GetDateTime(3);
                     order.DeliveryDate = reader.GetDateTime(4);
                     order.Customer = new Customer(reader.GetString(5), reader.GetString(6));
-                    order.Status = (Status) reader.GetInt32(7);
+                    order.Status = (Status)reader.GetInt32(7);
                 }
             }
 
@@ -86,7 +86,7 @@ namespace Ordermanager_DAL
                 query.Parameters.AddWithValue("OrderDate", order.OrderDate);
                 query.Parameters.AddWithValue("DeliveryDate", order.DeliveryDate);
                 query.Parameters.AddWithValue("CustomerID", order.Customer);
-                query.Parameters.AddWithValue("Status", (int) order.Status);
+                query.Parameters.AddWithValue("Status", (int)order.Status);
                 query.ExecuteNonQuery();
             }
         }
@@ -100,9 +100,44 @@ namespace Ordermanager_DAL
                 query.CommandText =
                     @"UPDATE `ordermanager`.`order` SET `Status`=@Status WHERE  `OrderNr`=@OrderNr;";
                 query.Parameters.AddWithValue("OrderNr", order.Id);
-                query.Parameters.AddWithValue("Status", (int) order.Status);
+                query.Parameters.AddWithValue("Status", (int)order.Status);
                 query.ExecuteNonQuery();
             }
+        }
+
+        public IReadOnlyCollection<OrderDto> GetOrdersOnStatus(int statusId)
+        {
+            var orders = new List<OrderDto>();
+
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                var query = conn.CreateCommand();
+                conn.Open();
+                query.CommandText =
+                    @"SELECT `order`.OrderNr, product.Name, product.Price, `order`.Orderdate, `order`.DeliveryDate, customer.Name, customer.Adress, `order`.`Status` 
+                    FROM `order`, product, customer 
+                    WHERE order.ProductID = product.ID 
+                    AND order.CustomerID = customer.ID 
+                    AND Status = @Status";
+                query.Parameters.AddWithValue("Status", statusId);
+
+                var reader = query.ExecuteReader();
+                while (reader.Read())
+                {
+                    var order = new OrderDto
+                    {
+                        OrderNr = reader.GetInt32(0),
+                        Product = new Product(reader.GetString(1), reader.GetDouble(2)),
+                        OrderDate = reader.GetDateTime(3),
+                        DeliveryDate = reader.GetDateTime(4),
+                        Customer = new Customer(reader.GetString(5), reader.GetString(6)),
+                        Status = (Status)reader.GetInt32(7)
+                    };
+                    orders.Add(order);
+                }
+            }
+
+            return orders.AsReadOnly();
         }
     }
 }

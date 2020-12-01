@@ -32,5 +32,10 @@ namespace Ordermanager_Logic.Collections
         {
             _provider.UpdateStatus(update);
         }
+
+        public IReadOnlyCollection<OrderDto> GetOnStatus(int statusId)
+        {
+            return _provider.GetOrdersOnStatus(statusId);
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace Ordermanager_Logic.Collections
         }
 
 
-        public List<ProductDto> GetAllProducts()
+        public IReadOnlyCollection<ProductDto> GetAllProducts()
         {
             return provider.GetAllProducts();
         }

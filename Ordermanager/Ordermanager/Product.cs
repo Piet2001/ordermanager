@@ -7,8 +7,8 @@
 
         public Product(string name, double price)
         {
-            this.Name = name;
-            this.Price = price;
+            Name = name;
+            Price = price;
         }
 
         public void UpdatePrice(double newprice)

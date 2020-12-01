@@ -5,6 +5,6 @@ namespace Ordermanager_Logic.Interfaces
 {
     public interface IProductProvider
     {
-        List<ProductDto> GetAllProducts();
+        IReadOnlyCollection<ProductDto> GetAllProducts();
     }
 }

@@ -10,7 +10,7 @@ namespace Ordermanager_DAL
     {
         private readonly string connectionString = "Server=127.0.0.1;Database=ordermanager;Uid=root;Pwd=;";
 
-        public List<ProductDto> GetAllProducts()
+        public IReadOnlyCollection<ProductDto> GetAllProducts()
         {
             List<ProductDto> customers = new List<ProductDto>();
 
@@ -32,7 +32,7 @@ namespace Ordermanager_DAL
                     }
                 }
             }
-            return customers;
+            return customers.AsReadOnly();
         }
 
         public void AddProduct(Product product)
