@@ -31,7 +31,7 @@ namespace Ordermanager_DAL
                     }
                 }
             }
-            return customers;
+            return customers.AsReadOnly();
         }
 
         public void AddCustomer(Customer customer)
