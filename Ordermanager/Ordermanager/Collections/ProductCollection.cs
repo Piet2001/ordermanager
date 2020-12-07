@@ -12,11 +12,14 @@ namespace Ordermanager_Logic.Collections
         {
             this.provider = provider;
         }
-
-
         public IReadOnlyCollection<ProductDto> GetAllProducts()
         {
             return provider.GetAllProducts();
+        }
+
+        public ProductDto GetProductById(int id)
+        {
+            return provider.GetProductByID(id);
         }
     }
 }

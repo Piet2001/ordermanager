@@ -1,8 +1,10 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System;
+using MySql.Data.MySqlClient;
 using Ordermanager_Logic;
 using Ordermanager_Logic.Dto;
 using Ordermanager_Logic.Interfaces;
 using System.Collections.Generic;
+using System.Diagnostics;
 using static Ordermanager_DAL.Connection;
 
 namespace Ordermanager_DAL
@@ -33,6 +35,38 @@ namespace Ordermanager_DAL
                 }
             }
             return customers.AsReadOnly();
+        }
+
+        public ProductDto GetProductByID(int id)
+        {
+            var product = new ProductDto();
+            try
+            {
+                using (MySqlConnection conn = Conn())
+                {
+                    var query = conn.CreateCommand();
+                    conn.Open();
+                    query.CommandText =
+                        @"SELECT product.ID, product.Name, product.Price 
+                                    FROM product
+                                    WHERE product.ID = @ProductID";
+                    query.Parameters.AddWithValue("ProductID", id);
+
+                    var reader = query.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        product.Id = reader.GetInt32(0);
+                        product.Name = reader.GetString(1);
+                        product.Price =reader.GetDouble(2);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+
+            return product;
         }
 
         public void AddProduct(Product product)

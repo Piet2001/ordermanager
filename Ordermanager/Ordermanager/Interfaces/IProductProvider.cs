@@ -6,5 +6,6 @@ namespace Ordermanager_Logic.Interfaces
     public interface IProductProvider
     {
         IReadOnlyCollection<ProductDto> GetAllProducts();
+        ProductDto GetProductByID(int id);
     }
 }
