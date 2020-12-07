@@ -41,20 +41,24 @@ namespace View.Controllers
         // GET: OrdersController/Details/5
         public ActionResult Details(int id)
         {
-            OrderDto order = orderCollection.GetOrderById(id);
             OrderViewModel orderview = new OrderViewModel();
-            orderview.OrderNr = order.OrderNr;
-            orderview.OrderDate = order.OrderDate;
-            orderview.DeliveryDate = order.DeliveryDate;
-            orderview.Customer = order.Customer.Name;
-            orderview.Product = order.Product.Name;
-            orderview.Status = order.Status;
-
-            if (orderview.Customer == null)
+            try
             {
-                throw new DataException("Order not found");
+                OrderDto order = orderCollection.GetOrderById(id);
+                orderview.OrderNr = order.OrderNr;
+                orderview.OrderDate = order.OrderDate;
+                orderview.DeliveryDate = order.DeliveryDate;
+                orderview.Customer = order.Customer.Name;
+                orderview.CustomerAdress = order.Customer.Adress;
+                orderview.Product = order.Product.Name;
+                orderview.ProductPrice = order.Product.Price;
+                orderview.Status = order.Status;
             }
-
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                throw new Exception("Geen details gevonden!");
+            }
             return View(orderview);
         }
 
@@ -67,10 +71,20 @@ namespace View.Controllers
         // POST: OrdersController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateDto dto)
+        public ActionResult Create(OrderCreateModel model)
         {
             try
             {
+                CreateDto dto = new CreateDto();
+                {
+                    dto.OrderNr = model.OrderNr;
+                    dto.Product = model.Product;
+                    dto.OrderDate = model.OrderDate;
+                    dto.DeliveryDate = model.DeliveryDate;
+                    dto.Customer = model.Customer;
+                    dto.Status = model.Status;
+                }
+                
                 orderCollection.AddOrder(dto);
                 return RedirectToAction(nameof(Index));
             }

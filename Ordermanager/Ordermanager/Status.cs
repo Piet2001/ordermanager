@@ -2,7 +2,6 @@
 {
     public enum Status
     {
-        Onbekend = 0,
         WachtenOpOnderdelen = 1,
         KlaarVoorProductie = 2,
         InProductie = 3,
