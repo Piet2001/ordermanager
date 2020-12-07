@@ -21,5 +21,10 @@ namespace Ordermanager_Logic.Collections
         {
             return provider.GetProductByID(id);
         }
+
+        public void AddProduct(ProductCreateDto product)
+        {
+            provider.AddProduct(product);
+        }
     }
 }

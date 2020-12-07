@@ -66,10 +66,17 @@ namespace View.Controllers
         // POST: ProductController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(ProductCreateModel model)
         {
             try
             {
+                ProductCreateDto dto = new ProductCreateDto();
+                {
+                    dto.Name = model.Name;
+                    dto.Price = model.Price;
+ 
+                }
+                productCollection.AddProduct(dto);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -88,27 +95,6 @@ namespace View.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ProductController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: ProductController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
         {
             try
             {

@@ -69,9 +69,27 @@ namespace Ordermanager_DAL
             return product;
         }
 
-        public void AddProduct(Product product)
+        public void AddProduct(ProductCreateDto product)
         {
-           
+            try
+            {
+                using (MySqlConnection conn = Conn())
+                {
+                    var query = conn.CreateCommand();
+                    conn.Open();
+                    query.CommandText =
+                        @"INSERT INTO `ordermanager`.`product` (`Name`, `Price`)
+                            VALUES (@Name, @Price);";
+                    query.Parameters.AddWithValue("Name", product.Name);
+                    query.Parameters.AddWithValue("Price", product.Price);
+
+                    query.ExecuteNonQuery();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
         }
     }
 }
