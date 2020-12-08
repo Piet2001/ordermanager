@@ -12,6 +12,8 @@ namespace View.Controllers
     public class OrdersController : Controller
     {
         private readonly OrderCollection orderCollection = new OrderCollection(new Ordermanager_DAL.OrderDal());
+        private readonly ProductCollection productCollection = new ProductCollection(new Ordermanager_DAL.ProductDal());
+
 
         // GET: OrdersController
         public ActionResult Index()
@@ -65,7 +67,8 @@ namespace View.Controllers
         // GET: OrdersController/Create
         public ActionResult Create()
         {
-            return View();
+            OrderCreateModel model = new OrderCreateModel {Products = productCollection.GetAllProducts()};
+            return View(model);
         }
 
         // POST: OrdersController/Create

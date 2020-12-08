@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Ordermanager_Logic;
+using Ordermanager_Logic.Dto;
 
 namespace View.Models
 {
@@ -13,5 +15,7 @@ namespace View.Models
         public int Customer { get; set; }
         [EnumDataType(typeof(Status))]
         public Status Status { get; set; }
+
+        public IReadOnlyCollection<ProductDto> Products { get; set; }
     }
 }
