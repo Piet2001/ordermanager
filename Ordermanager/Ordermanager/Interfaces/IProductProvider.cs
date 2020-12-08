@@ -8,5 +8,6 @@ namespace Ordermanager_Logic.Interfaces
         IReadOnlyCollection<ProductDto> GetAllProducts();
         ProductDto GetProductByID(int id);
         void AddProduct(ProductCreateDto product);
+        void UpdatePrice(ProductUpdateDto product);
     }
 }

@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Ordermanager_Logic.Collections;
+using Ordermanager_Logic.Dto;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Ordermanager_Logic.Collections;
-using Ordermanager_Logic.Dto;
 using View.Models;
 
 namespace View.Controllers
@@ -94,10 +91,16 @@ namespace View.Controllers
         // POST: ProductController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(ProductUpdateModel model)
         {
             try
             {
+                ProductUpdateDto dto = new ProductUpdateDto();
+                {
+                    dto.Id = model.Id;
+                    dto.Price = model.Price;
+                }
+                productCollection.UpdatePrice(dto);
                 return RedirectToAction(nameof(Index));
             }
             catch

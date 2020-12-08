@@ -91,5 +91,26 @@ namespace Ordermanager_DAL
                 Debug.WriteLine(e);
             }
         }
+
+        public void UpdatePrice(ProductUpdateDto product)
+        {
+            try
+            {
+                using (MySqlConnection conn = Conn())
+                {
+                    var query = conn.CreateCommand();
+                    conn.Open();
+                    query.CommandText =
+                        @"UPDATE `ordermanager`.`product` SET `Price`=@Price WHERE  `ID`=@ID;";
+                    query.Parameters.AddWithValue("ID", product.Id);
+                    query.Parameters.AddWithValue("Price", product.Price);
+                    query.ExecuteNonQuery();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+        }
     }
 }

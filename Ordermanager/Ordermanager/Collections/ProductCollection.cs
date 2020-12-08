@@ -26,5 +26,10 @@ namespace Ordermanager_Logic.Collections
         {
             provider.AddProduct(product);
         }
+
+        public void UpdatePrice(ProductUpdateDto update)
+        {
+            provider.UpdatePrice(update);
+        }
     }
 }
