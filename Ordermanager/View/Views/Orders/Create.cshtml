@@ -21,7 +21,7 @@
                 <label asp-for="Product" class="control-label"></label>
                 <select asp-for="Product" class="form-control">
                     <option selected="selected" value="">Please select</option>
-                    @foreach (var product in Model.products)
+                    @foreach (var product in Model.Products)
                     {
                         <option value="@product.Id">@product.Name</option>
                     }
