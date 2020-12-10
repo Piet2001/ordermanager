@@ -1,8 +1,8 @@
 ﻿namespace View.Models
 {
-    public class ProductCreateModel
+    public class CustomerCreateModel
     {
         public string Name { get; set; }
-        public double Price { get; set; }
+        public string Adress { get; set; }
     }
 }

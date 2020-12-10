@@ -1,9 +1,9 @@
 ﻿namespace View.Models
 {
-    public class ProductViewModel
+    public class CustomerViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public double Price { get; set; }
+        public string Adress { get; set; }
     }
 }

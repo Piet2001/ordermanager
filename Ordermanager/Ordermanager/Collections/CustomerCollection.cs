@@ -6,17 +6,32 @@ namespace Ordermanager_Logic.Collections
 {
     public class CustomerCollection
     {
-        private ICustomerProvider _provider;
+        private ICustomerProvider provider;
 
         public CustomerCollection(ICustomerProvider provider)
         {
-            _provider = provider;
+            provider = provider;
         }
 
 
-        public IReadOnlyCollection<CustomerDto> GetAllOrders()
+        public IReadOnlyCollection<CustomerDto> GetAllCustomers()
         {
-            return _provider.GetAllCustomers();
+            return provider.GetAllCustomers();
+        }
+
+        public CustomerDto GetCustomerById(int id)
+        {
+            return provider.GetCustomerByID(id);
+        }
+
+        public void AddCustomer(CustomerCreateDto customer)
+        {
+            provider.AddCustomer(customer);
+        }
+
+        public void UpdateAdress(CustomerUpdateDto update)
+        {
+            provider.UpdateAdress(update);
         }
 
     }
