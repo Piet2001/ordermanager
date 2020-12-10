@@ -10,7 +10,7 @@ namespace Ordermanager_Logic.Collections
 
         public CustomerCollection(ICustomerProvider provider)
         {
-            provider = provider;
+            this.provider = provider;
         }
 
 

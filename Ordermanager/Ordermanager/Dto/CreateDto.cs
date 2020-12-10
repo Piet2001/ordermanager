@@ -4,7 +4,6 @@ namespace Ordermanager_Logic.Dto
 {
     public class CreateDto
     {
-        public int OrderNr { get; set; }
         public int Product { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime DeliveryDate { get; set; }

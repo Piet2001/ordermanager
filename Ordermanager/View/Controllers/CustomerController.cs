@@ -70,6 +70,13 @@ namespace View.Controllers
         {
             try
             {
+                CustomerCreateDto dto = new CustomerCreateDto();
+                {
+                    dto.Name = model.Name;
+                    dto.Adress = model.Adress;
+
+                }
+                customerCollection.AddCustomer(dto);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -87,31 +94,16 @@ namespace View.Controllers
         // POST: CustomerController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(CustomerUpdateModel model)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: CustomerController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: CustomerController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
+                CustomerUpdateDto dto = new CustomerUpdateDto();
+                {
+                    dto.Id = model.Id;
+                    dto.Adress = model.Adress;
+                }
+                customerCollection.UpdateAdress(dto);
                 return RedirectToAction(nameof(Index));
             }
             catch

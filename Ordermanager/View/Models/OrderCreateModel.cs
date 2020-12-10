@@ -8,7 +8,6 @@ namespace View.Models
 {
     public class OrderCreateModel
     {
-        public int OrderNr { get; set; }
         public int Product { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime DeliveryDate { get; set; }
@@ -17,5 +16,6 @@ namespace View.Models
         public Status Status { get; set; }
 
         public IReadOnlyCollection<ProductDto> Products { get; set; }
+        public IReadOnlyCollection<CustomerDto> Customers { get; set; }
     }
 }

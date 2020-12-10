@@ -17,7 +17,7 @@ namespace Ordermanager_DAL
 
             using (MySqlConnection conn = Conn())
             {
-                using (MySqlCommand query = new MySqlCommand("SELECT product.Id, product.Name, product.Price FROM product", conn))
+                using (MySqlCommand query = new MySqlCommand("SELECT product.Id, product.Name, product.Price FROM product Order by product.Id", conn))
                 {
                     conn.Open();
 

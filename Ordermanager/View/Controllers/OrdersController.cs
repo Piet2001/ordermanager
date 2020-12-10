@@ -14,7 +14,7 @@ namespace View.Controllers
     {
         private readonly OrderCollection orderCollection = new OrderCollection(new Ordermanager_DAL.OrderDal());
         private readonly ProductCollection productCollection = new ProductCollection(new Ordermanager_DAL.ProductDal());
-
+        private readonly CustomerCollection customerCollection = new CustomerCollection(new Ordermanager_DAL.CustomerDal());
 
         // GET: OrdersController
         public ActionResult Index()
@@ -68,7 +68,9 @@ namespace View.Controllers
         // GET: OrdersController/Create
         public ActionResult Create()
         {
-            OrderCreateModel model = new OrderCreateModel {Products = productCollection.GetAllProducts()};
+            OrderCreateModel model = new OrderCreateModel();
+            model.Products = productCollection.GetAllProducts();
+            model.Customers = customerCollection.GetAllCustomers();
             return View(model);
         }
 
@@ -81,7 +83,6 @@ namespace View.Controllers
             {
                 CreateDto dto = new CreateDto();
                 {
-                    dto.OrderNr = model.OrderNr;
                     dto.Product = model.Product;
                     dto.OrderDate = model.OrderDate;
                     dto.DeliveryDate = model.DeliveryDate;

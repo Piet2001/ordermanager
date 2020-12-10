@@ -23,7 +23,8 @@ namespace Ordermanager_DAL
                         @"SELECT `order`.OrderNr, product.Name, product.Price, `order`.Orderdate, `order`.DeliveryDate, 
                         customer.Name, customer.Adress, `order`.`Status` FROM `order`, product, customer 
                         WHERE order.ProductID = product.ID 
-                        AND order.CustomerID = customer.ID",
+                        AND order.CustomerID = customer.ID
+                        Order by `order`.OrderNr",
                         conn))
                     {
                         conn.Open();
@@ -100,9 +101,8 @@ namespace Ordermanager_DAL
                     var query = conn.CreateCommand();
                     conn.Open();
                     query.CommandText =
-                        @"INSERT INTO `ordermanager`.`order` (`OrderNr`, `ProductID`, `OrderDate`, `DeliveryDate`, `CustomerID`, `Status`) 
-                    VALUES (@OrderNr, @ProductID, @OrderDate, @DeliveryDate, @CustomerID, @Status);";
-                    query.Parameters.AddWithValue("OrderNr", order.OrderNr);
+                        @"INSERT INTO `ordermanager`.`order` (`ProductID`, `OrderDate`, `DeliveryDate`, `CustomerID`, `Status`) 
+                    VALUES (@ProductID, @OrderDate, @DeliveryDate, @CustomerID, @Status);";
                     query.Parameters.AddWithValue("ProductID", order.Product);
                     query.Parameters.AddWithValue("OrderDate", order.OrderDate);
                     query.Parameters.AddWithValue("DeliveryDate", order.DeliveryDate);
@@ -152,7 +152,8 @@ namespace Ordermanager_DAL
                     FROM `order`, product, customer 
                     WHERE order.ProductID = product.ID 
                     AND order.CustomerID = customer.ID 
-                    AND Status = @Status";
+                    AND Status = @Status
+                    Order by `order`.OrderNr";
                     query.Parameters.AddWithValue("Status", statusId);
 
                     var reader = query.ExecuteReader();

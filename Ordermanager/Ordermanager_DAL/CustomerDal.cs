@@ -17,7 +17,7 @@ namespace Ordermanager_DAL
 
             using (MySqlConnection conn = Conn())
             {
-                using (MySqlCommand query = new MySqlCommand("SELECT customer.Name, customer.Adress FROM customer", conn))
+                using (MySqlCommand query = new MySqlCommand("SELECT customer.id, customer.Name, customer.Adress FROM customer Order by Customer.Id", conn))
                 {
                     conn.Open();
 
@@ -26,8 +26,9 @@ namespace Ordermanager_DAL
                     {
                         CustomerDto customer = new CustomerDto
                         {
-                            Name = reader.GetString(0),
-                            Adress = reader.GetString(1)
+                            Id = reader.GetInt32(0),
+                            Name = reader.GetString(1),
+                            Adress = reader.GetString(2)
                         };
                         customers.Add(customer);
                     }
