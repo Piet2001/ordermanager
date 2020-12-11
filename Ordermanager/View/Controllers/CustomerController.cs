@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Ordermanager_Logic;
 using Ordermanager_Logic.Collections;
 using Ordermanager_Logic.Dto;
 using View.Models;
@@ -18,7 +19,7 @@ namespace View.Controllers
         // GET: CustomerController
         public ActionResult Index()
         {
-            IReadOnlyCollection<CustomerDto> customers = customerCollection.GetAllCustomers();
+            IReadOnlyCollection<Customer> customers = customerCollection.GetAllCustomers();
             if (customers.Count == 0)
             {
                 throw new Exception("Geen gegevens gevonden.");
@@ -44,7 +45,7 @@ namespace View.Controllers
             CustomerViewModel customerView = new CustomerViewModel();
             try
             {
-                CustomerDto customer = customerCollection.GetCustomerById(id);
+                Customer customer = customerCollection.GetCustomerById(id);
                 customerView.Id = customer.Id;
                 customerView.Name = customer.Name;
                 customerView.Adress = customer.Adress;
@@ -70,13 +71,13 @@ namespace View.Controllers
         {
             try
             {
-                CustomerCreateDto dto = new CustomerCreateDto();
-                {
-                    dto.Name = model.Name;
-                    dto.Adress = model.Adress;
+                Customer customer = new Customer
+                (
+                   model.Name,
+                   model.Adress
 
-                }
-                customerCollection.AddCustomer(dto);
+                );
+                customerCollection.AddCustomer(customer);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -88,11 +89,11 @@ namespace View.Controllers
         // GET: CustomerController/Edit/5
         public ActionResult Edit(int id)
         {
-            CustomerDto product = customerCollection.GetCustomerById(id);
+            Customer customer = customerCollection.GetCustomerById(id);
             CustomerUpdateModel update = new CustomerUpdateModel();
             {
-                update.Id = product.Id;
-                update.Adress = product.Adress;
+                update.Id = customer.Id;
+                update.Adress = customer.Adress;
 
             }
             return View(update);
@@ -105,12 +106,7 @@ namespace View.Controllers
         {
             try
             {
-                CustomerUpdateDto dto = new CustomerUpdateDto();
-                {
-                    dto.Id = model.Id;
-                    dto.Adress = model.Adress;
-                }
-                customerCollection.UpdateAdress(dto);
+                customerCollection.UpdateAdress(model.Id, model.Adress);
                 return RedirectToAction(nameof(Index));
             }
             catch

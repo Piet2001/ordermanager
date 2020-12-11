@@ -12,24 +12,24 @@ namespace Ordermanager_Logic.Collections
         {
             this.provider = provider;
         }
-        public IReadOnlyCollection<ProductDto> GetAllProducts()
+        public IReadOnlyCollection<Product> GetAllProducts()
         {
             return provider.GetAllProducts();
         }
 
-        public ProductDto GetProductById(int id)
+        public Product GetProductById(int id)
         {
             return provider.GetProductByID(id);
         }
 
-        public void AddProduct(ProductCreateDto product)
+        public void AddProduct(Product product)
         {
             provider.AddProduct(product);
         }
 
-        public void UpdatePrice(ProductUpdateDto update)
+        public void UpdatePrice(int id, double price)
         {
-            provider.UpdatePrice(update);
+            provider.UpdatePrice(id, price);
         }
     }
 }

@@ -1,45 +1,48 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using Ordermanager_Logic;
+using Ordermanager_Logic.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using MySql.Data.MySqlClient;
-using Ordermanager_Logic;
-using Ordermanager_Logic.Dto;
-using Ordermanager_Logic.Interfaces;
 using static Ordermanager_DAL.Connection;
 
 namespace Ordermanager_DAL
 {
     public class CustomerDal : ICustomerProvider
     {
-        public IReadOnlyCollection<CustomerDto> GetAllCustomers()
+        public IReadOnlyCollection<Customer> GetAllCustomers()
         {
-            List<CustomerDto> customers = new List<CustomerDto>();
+            List<Customer> customers = new List<Customer>();
 
             using (MySqlConnection conn = Conn())
             {
-                using (MySqlCommand query = new MySqlCommand("SELECT customer.id, customer.Name, customer.Adress FROM customer Order by Customer.Id", conn))
+                using (MySqlCommand query =
+                    new MySqlCommand(
+                        "SELECT customer.id, customer.Name, customer.Adress FROM customer Order by Customer.Id", conn))
                 {
                     conn.Open();
 
                     var reader = query.ExecuteReader();
                     while (reader.Read())
                     {
-                        CustomerDto customer = new CustomerDto
-                        {
-                            Id = reader.GetInt32(0),
-                            Name = reader.GetString(1),
-                            Adress = reader.GetString(2)
-                        };
+                        Customer customer = new Customer
+                        (
+                            reader.GetInt32(0),
+                            reader.GetString(1),
+                            reader.GetString(2)
+
+                        );
                         customers.Add(customer);
                     }
                 }
             }
+
             return customers.AsReadOnly();
         }
 
-        public CustomerDto GetCustomerByID(int id)
+        public Customer GetCustomerByID(int id)
         {
-            var customer = new CustomerDto();
+            Customer customer = new Customer();
             try
             {
                 using (MySqlConnection conn = Conn())
@@ -55,9 +58,13 @@ namespace Ordermanager_DAL
                     var reader = query.ExecuteReader();
                     while (reader.Read())
                     {
-                        customer.Id = reader.GetInt32(0);
-                        customer.Name = reader.GetString(1);
-                        customer.Adress = reader.GetString(2);
+                        customer = new Customer
+                        (
+                            reader.GetInt32(0),
+                            reader.GetString(1),
+                            reader.GetString(2)
+
+                        );
                     }
                 }
             }
@@ -69,7 +76,7 @@ namespace Ordermanager_DAL
             return customer;
         }
 
-        public void AddCustomer(CustomerCreateDto customer)
+        public void AddCustomer(Customer customer)
         {
             try
             {
@@ -92,7 +99,7 @@ namespace Ordermanager_DAL
             }
         }
 
-        public void UpdateAdress(CustomerUpdateDto customer)
+        public void UpdateAdress(int id, string adress)
         {
             try
             {
@@ -102,8 +109,8 @@ namespace Ordermanager_DAL
                     conn.Open();
                     query.CommandText =
                         @"UPDATE `ordermanager`.`customer` SET `Adress`=@Adress WHERE  `ID`=@ID;";
-                    query.Parameters.AddWithValue("ID", customer.Id);
-                    query.Parameters.AddWithValue("Adress", customer.Adress);
+                    query.Parameters.AddWithValue("ID", id);
+                    query.Parameters.AddWithValue("Adress", adress);
                     query.ExecuteNonQuery();
                 }
             }

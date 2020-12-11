@@ -5,37 +5,49 @@ namespace Ordermanager_Logic
 {
     public class Order
     {
-        private readonly int orderNumber;
-        private readonly DateTime orderDate;
-        private readonly DateTime deliveryDate;
-        private Status status;
-        private readonly Customer customer;
-        private readonly Product product;
+        public int OrderNumber {get; }
+        public DateTime OrderDate {get; }
+        public DateTime DeliveryDate {get; }
+        public Status Status {get;private set;}
+        public Customer Customer {get; }
+        public Product Product {get; }
 
-        public Order(OrderDto neworder)
+        public Order(int orderNumber, Product product, DateTime orderDate, DateTime deliveryDate, Customer customer, Status status)
         {
-            orderNumber = neworder.OrderNr;
-            orderDate = neworder.OrderDate;
-            deliveryDate = neworder.DeliveryDate;
-            status = neworder.Status;
-            customer = neworder.Customer;
-            product = neworder.Product;
+            this.OrderNumber = orderNumber;
+            this.OrderDate = orderDate;
+            this.DeliveryDate = deliveryDate;
+            this.Status = status;
+            this.Customer = customer;
+            this.Product = product;
+        }
+        public Order(Product product, DateTime orderDate, DateTime deliveryDate, Customer customer, Status status)
+        {
+            this.OrderDate = orderDate;
+            this.DeliveryDate = deliveryDate;
+            this.Status = status;
+            this.Customer = customer;
+            this.Product = product;
+        }
+
+        public Order()
+        {
         }
 
         public void UpdateStatus(Status newStatus)
         {
-            this.status = newStatus;
+            this.Status = newStatus;
         }
 
         public override string ToString()
         {
             string result;
-            result = "OrderNummer: " + orderNumber + "\n";
-            result += "OrderDate: " + orderDate + "\n";
-            result += "DeliveryDate: " + deliveryDate + "\n";
-            result += "Status: " + status + "\n";
-            result += "Customer: \n" + customer + "\n";
-            result += "Product: \n" + product + "\n";
+            result = "OrderNummer: " + OrderNumber + "\n";
+            result += "OrderDate: " + OrderDate + "\n";
+            result += "DeliveryDate: " + DeliveryDate + "\n";
+            result += "Status: " + Status + "\n";
+            result += "Customer: \n" + Customer + "\n";
+            result += "Product: \n" + Product + "\n";
 
             return result;
         }

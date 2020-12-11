@@ -15,7 +15,7 @@ namespace View.Models
         [EnumDataType(typeof(Status))]
         public Status Status { get; set; }
 
-        public IReadOnlyCollection<ProductDto> Products { get; set; }
-        public IReadOnlyCollection<CustomerDto> Customers { get; set; }
+        public IReadOnlyCollection<Product> Products { get; set; }
+        public IReadOnlyCollection<Customer> Customers { get; set; }
     }
 }

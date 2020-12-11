@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Ordermanager_Logic.Collections;
-using Ordermanager_Logic.Dto;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Ordermanager_Logic;
 using View.Models;
 
 namespace View.Controllers
@@ -15,7 +15,7 @@ namespace View.Controllers
         // GET: ProductController
         public ActionResult Index()
         {
-            IReadOnlyCollection<ProductDto> products = productCollection.GetAllProducts();
+            IReadOnlyCollection<Product> products = productCollection.GetAllProducts();
             if (products.Count == 0)
             {
                 throw new Exception("Geen gegevens gevonden.");
@@ -41,7 +41,7 @@ namespace View.Controllers
             ProductViewModel productView = new ProductViewModel();
             try
             {
-                ProductDto product = productCollection.GetProductById(id);
+                Product product = productCollection.GetProductById(id);
                 productView.Id = product.Id;
                 productView.Name = product.Name;
                 productView.Price = product.Price;
@@ -67,13 +67,12 @@ namespace View.Controllers
         {
             try
             {
-                ProductCreateDto dto = new ProductCreateDto();
-                {
-                    dto.Name = model.Name;
-                    dto.Price = model.Price;
- 
-                }
-                productCollection.AddProduct(dto);
+                Product product = new Product
+                (
+                    model.Name,
+                    model.Price
+                );
+                productCollection.AddProduct(product);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -85,7 +84,7 @@ namespace View.Controllers
         // GET: ProductController/Edit/5
         public ActionResult Edit(int id)
         {
-            ProductDto product = productCollection.GetProductById(id);
+            Product product = productCollection.GetProductById(id);
             ProductUpdateModel update = new ProductUpdateModel();
             {
                 update.Id = product.Id;
@@ -102,12 +101,7 @@ namespace View.Controllers
         {
             try
             {
-                ProductUpdateDto dto = new ProductUpdateDto();
-                {
-                    dto.Id = model.Id;
-                    dto.Price = model.Price;
-                }
-                productCollection.UpdatePrice(dto);
+                productCollection.UpdatePrice(model.Id, model.Price);
                 return RedirectToAction(nameof(Index));
             }
             catch

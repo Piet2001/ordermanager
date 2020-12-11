@@ -1,10 +1,8 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Ordermanager_Logic;
 using Ordermanager_Logic.Collections;
-using Ordermanager_Logic.Dto;
+using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Diagnostics;
 using View.Models;
 
@@ -19,7 +17,7 @@ namespace View.Controllers
         // GET: OrdersController
         public ActionResult Index()
         {
-            IReadOnlyCollection<OrderDto> orders = orderCollection.GetAllOrders();
+            IReadOnlyCollection<Order> orders = orderCollection.GetAllOrders();
             if (orders.Count == 0)
             {
                 throw new Exception("Geen gegevens gevonden.");
@@ -29,7 +27,7 @@ namespace View.Controllers
             {
                 OrderViewModel input = new OrderViewModel()
                 {
-                    OrderNr = order.OrderNr,
+                    OrderNr = order.OrderNumber,
                     Product = order.Product.Name,
                     OrderDate = order.OrderDate,
                     DeliveryDate = order.DeliveryDate,
@@ -47,8 +45,8 @@ namespace View.Controllers
             OrderViewModel orderview = new OrderViewModel();
             try
             {
-                OrderDto order = orderCollection.GetOrderById(id);
-                orderview.OrderNr = order.OrderNr;
+                Order order = orderCollection.GetOrderById(id);
+                orderview.OrderNr = order.OrderNumber;
                 orderview.OrderDate = order.OrderDate;
                 orderview.DeliveryDate = order.DeliveryDate;
                 orderview.Customer = order.Customer.Name;
@@ -81,16 +79,15 @@ namespace View.Controllers
         {
             try
             {
-                CreateDto dto = new CreateDto();
-                {
-                    dto.Product = model.Product;
-                    dto.OrderDate = model.OrderDate;
-                    dto.DeliveryDate = model.DeliveryDate;
-                    dto.Customer = model.Customer;
-                    dto.Status = model.Status;
-                }
-                
-                orderCollection.AddOrder(dto);
+                Order order = new Order(
+                    productCollection.GetProductById(model.Product),
+                    model.OrderDate,
+                    model.DeliveryDate,
+                    customerCollection.GetCustomerById(model.Customer),
+                    model.Status
+                    );
+
+                orderCollection.AddOrder(order);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -102,10 +99,10 @@ namespace View.Controllers
         // GET: OrdersController/Edit/5
         public ActionResult Edit(int id)
         {
-            OrderDto order = orderCollection.GetOrderById(id);
+            Order order = orderCollection.GetOrderById(id);
             OrderUpdateModel update = new OrderUpdateModel();
             {
-                update.Id = order.OrderNr;
+                update.Id = order.OrderNumber;
                 update.Status = order.Status;
 
             }
@@ -115,11 +112,11 @@ namespace View.Controllers
         // POST: OrdersController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(UpdateDto update)
+        public ActionResult Edit(OrderUpdateModel update)
         {
             try
             {
-                orderCollection.UpdateStatus(update);
+                orderCollection.UpdateStatus(update.Id, update.Status);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -137,7 +134,7 @@ namespace View.Controllers
         // GET: OrdersController/Status/5
         public ActionResult Status(int id)
         {
-            IReadOnlyCollection<OrderDto> orders = orderCollection.GetOnStatus(id);
+            IReadOnlyCollection<Order> orders = orderCollection.GetOnStatus(id);
             if (id > 0 && id < 6)
             {
                 ViewBag.Message = "Status " + id + "(" + orders.Count + ")";
@@ -152,7 +149,7 @@ namespace View.Controllers
             {
                 OrderViewModel input = new OrderViewModel()
                 {
-                    OrderNr = order.OrderNr,
+                    OrderNr = order.OrderNumber,
                     Product = order.Product.Name,
                     OrderDate = order.OrderDate,
                     DeliveryDate = order.DeliveryDate,

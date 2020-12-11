@@ -11,9 +11,9 @@ namespace Ordermanager_DAL
 {
     public class ProductDal : IProductProvider
     {
-        public IReadOnlyCollection<ProductDto> GetAllProducts()
+        public IReadOnlyCollection<Product> GetAllProducts()
         {
-            List<ProductDto> customers = new List<ProductDto>();
+            List<Product> products = new List<Product>();
 
             using (MySqlConnection conn = Conn())
             {
@@ -24,22 +24,23 @@ namespace Ordermanager_DAL
                     var reader = query.ExecuteReader();
                     while (reader.Read())
                     {
-                        ProductDto customer = new ProductDto
-                        {
-                            Id = reader.GetInt32(0),
-                            Name = reader.GetString(1),
-                            Price = reader.GetDouble(2)
-                        };
-                        customers.Add(customer);
+                        Product product = new Product
+                        (
+                            reader.GetInt32(0),
+                            reader.GetString(1),
+                            reader.GetDouble(2)
+
+                        );
+                        products.Add(product);
                     }
                 }
             }
-            return customers.AsReadOnly();
+            return products.AsReadOnly();
         }
 
-        public ProductDto GetProductByID(int id)
+        public Product GetProductByID(int id)
         {
-            var product = new ProductDto();
+            var product = new Product();
             try
             {
                 using (MySqlConnection conn = Conn())
@@ -55,9 +56,13 @@ namespace Ordermanager_DAL
                     var reader = query.ExecuteReader();
                     while (reader.Read())
                     {
-                        product.Id = reader.GetInt32(0);
-                        product.Name = reader.GetString(1);
-                        product.Price =reader.GetDouble(2);
+                        product = new Product
+                        (
+                            reader.GetInt32(0),
+                            reader.GetString(1),
+                            reader.GetDouble(2)
+
+                        );
                     }
                 }
             }
@@ -69,7 +74,7 @@ namespace Ordermanager_DAL
             return product;
         }
 
-        public void AddProduct(ProductCreateDto product)
+        public void AddProduct(Product product)
         {
             try
             {
@@ -92,7 +97,7 @@ namespace Ordermanager_DAL
             }
         }
 
-        public void UpdatePrice(ProductUpdateDto product)
+        public void UpdatePrice(int id, double price)
         {
             try
             {
@@ -102,8 +107,8 @@ namespace Ordermanager_DAL
                     conn.Open();
                     query.CommandText =
                         @"UPDATE `ordermanager`.`product` SET `Price`=@Price WHERE  `ID`=@ID;";
-                    query.Parameters.AddWithValue("ID", product.Id);
-                    query.Parameters.AddWithValue("Price", product.Price);
+                    query.Parameters.AddWithValue("ID", id);
+                    query.Parameters.AddWithValue("Price", price);
                     query.ExecuteNonQuery();
                 }
             }

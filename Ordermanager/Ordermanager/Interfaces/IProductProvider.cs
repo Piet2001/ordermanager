@@ -5,9 +5,9 @@ namespace Ordermanager_Logic.Interfaces
 {
     public interface IProductProvider
     {
-        IReadOnlyCollection<ProductDto> GetAllProducts();
-        ProductDto GetProductByID(int id);
-        void AddProduct(ProductCreateDto product);
-        void UpdatePrice(ProductUpdateDto product);
+        IReadOnlyCollection<Product> GetAllProducts();
+        Product GetProductByID(int id);
+        void AddProduct(Product product);
+        void UpdatePrice(int id, double price);
     }
 }

@@ -11,16 +11,16 @@ namespace Ordermanager_DAL
 {
     public class OrderDal : IOrderProvider
     {
-        public IReadOnlyCollection<OrderDto> GetAllOrders()
+        public IReadOnlyCollection<Order> GetAllOrders()
         {
-            var orders = new List<OrderDto>();
+            var orders = new List<Order>();
 
             try
             {
                 using (MySqlConnection conn = Conn())
                 {
                     using (var query = new MySqlCommand(
-                        @"SELECT `order`.OrderNr, product.Name, product.Price, `order`.Orderdate, `order`.DeliveryDate, 
+                        @"SELECT `order`.OrderNr, product.id, product.Name, product.Price, `order`.Orderdate, `order`.DeliveryDate, 
                         customer.Name, customer.Adress, `order`.`Status` FROM `order`, product, customer 
                         WHERE order.ProductID = product.ID 
                         AND order.CustomerID = customer.ID
@@ -32,15 +32,14 @@ namespace Ordermanager_DAL
                         var reader = query.ExecuteReader();
                         while (reader.Read())
                         {
-                            var order = new OrderDto
-                            {
-                                OrderNr = reader.GetInt32(0),
-                                Product = new Product(reader.GetString(1), reader.GetDouble(2)),
-                                OrderDate = reader.GetDateTime(3),
-                                DeliveryDate = reader.GetDateTime(4),
-                                Customer = new Customer(reader.GetString(5), reader.GetString(6)),
-                                Status = (Status)reader.GetInt32(7)
-                            };
+                            Order order = new Order(
+                                reader.GetInt32(0),
+                                new Product(reader.GetInt32(1), reader.GetString(2), reader.GetDouble(3)),
+                                reader.GetDateTime(4),
+                                reader.GetDateTime(5),
+                                new Customer(reader.GetString(6), reader.GetString(7)),
+                                (Status)reader.GetInt32(8)
+                            );
                             orders.Add(order);
                         }
                     }
@@ -55,9 +54,9 @@ namespace Ordermanager_DAL
             return orders.AsReadOnly();
         }
 
-        public OrderDto GetOrderByID(int id)
+        public Order GetOrderById(int id)
         {
-            var order = new OrderDto();
+            Order order = new Order();
             try
             {
                 using (MySqlConnection conn = Conn())
@@ -75,12 +74,14 @@ namespace Ordermanager_DAL
                     var reader = query.ExecuteReader();
                     while (reader.Read())
                     {
-                        order.OrderNr = reader.GetInt32(0);
-                        order.Product = new Product(reader.GetString(1), reader.GetDouble(2));
-                        order.OrderDate = reader.GetDateTime(3);
-                        order.DeliveryDate = reader.GetDateTime(4);
-                        order.Customer = new Customer(reader.GetString(5), reader.GetString(6));
-                        order.Status = (Status)reader.GetInt32(7);
+                        order = new Order(
+                            reader.GetInt32(0),
+                            new Product(reader.GetString(1), reader.GetDouble(2)),
+                            reader.GetDateTime(3),
+                            reader.GetDateTime(4),
+                            new Customer(reader.GetString(5), reader.GetString(6)),
+                            (Status)reader.GetInt32(7)
+                        );
                     }
                 }
             }
@@ -92,7 +93,7 @@ namespace Ordermanager_DAL
             return order;
         }
 
-        public void AddOrder(CreateDto order)
+        public void AddOrder(Order order)
         {
             try
             {
@@ -103,10 +104,10 @@ namespace Ordermanager_DAL
                     query.CommandText =
                         @"INSERT INTO `ordermanager`.`order` (`ProductID`, `OrderDate`, `DeliveryDate`, `CustomerID`, `Status`) 
                     VALUES (@ProductID, @OrderDate, @DeliveryDate, @CustomerID, @Status);";
-                    query.Parameters.AddWithValue("ProductID", order.Product);
+                    query.Parameters.AddWithValue("ProductID", order.Product.Id);
                     query.Parameters.AddWithValue("OrderDate", order.OrderDate);
                     query.Parameters.AddWithValue("DeliveryDate", order.DeliveryDate);
-                    query.Parameters.AddWithValue("CustomerID", order.Customer);
+                    query.Parameters.AddWithValue("CustomerID", order.Customer.Id);
                     query.Parameters.AddWithValue("Status", (int)order.Status);
                     query.ExecuteNonQuery();
                 }
@@ -117,7 +118,7 @@ namespace Ordermanager_DAL
             }
         }
 
-        public void UpdateStatus(UpdateDto order)
+        public void UpdateStatus(int id, Status status)
         {
             try
             {
@@ -127,8 +128,8 @@ namespace Ordermanager_DAL
                     conn.Open();
                     query.CommandText =
                         @"UPDATE `ordermanager`.`order` SET `Status`=@Status WHERE  `OrderNr`=@OrderNr;";
-                    query.Parameters.AddWithValue("OrderNr", order.Id);
-                    query.Parameters.AddWithValue("Status", (int)order.Status);
+                    query.Parameters.AddWithValue("OrderNr", id);
+                    query.Parameters.AddWithValue("Status", (int)status);
                     query.ExecuteNonQuery();
                 }
             }
@@ -138,9 +139,9 @@ namespace Ordermanager_DAL
             }
         }
 
-        public IReadOnlyCollection<OrderDto> GetOrdersOnStatus(int statusId)
+        public IReadOnlyCollection<Order> GetOrdersOnStatus(int statusId)
         {
-            var orders = new List<OrderDto>();
+            var orders = new List<Order>();
             try
             {
                 using (MySqlConnection conn = Conn())
@@ -159,15 +160,14 @@ namespace Ordermanager_DAL
                     var reader = query.ExecuteReader();
                     while (reader.Read())
                     {
-                        var order = new OrderDto
-                        {
-                            OrderNr = reader.GetInt32(0),
-                            Product = new Product(reader.GetString(1), reader.GetDouble(2)),
-                            OrderDate = reader.GetDateTime(3),
-                            DeliveryDate = reader.GetDateTime(4),
-                            Customer = new Customer(reader.GetString(5), reader.GetString(6)),
-                            Status = (Status)reader.GetInt32(7)
-                        };
+                        Order order = new Order(
+                            reader.GetInt32(0),
+                            new Product(reader.GetString(1), reader.GetDouble(2)),
+                            reader.GetDateTime(3),
+                            reader.GetDateTime(4),
+                            new Customer(reader.GetString(5), reader.GetString(6)),
+                            (Status)reader.GetInt32(7)
+                        );
                         orders.Add(order);
                     }
                 }

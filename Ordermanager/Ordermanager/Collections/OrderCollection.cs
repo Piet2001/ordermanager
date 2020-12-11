@@ -13,27 +13,27 @@ namespace Ordermanager_Logic.Collections
             _provider = provider;
         }
 
-        public IReadOnlyCollection<OrderDto> GetAllOrders()
+        public IReadOnlyCollection<Order> GetAllOrders()
         {
             return _provider.GetAllOrders();
         }
 
-        public OrderDto GetOrderById(int id)
+        public Order GetOrderById(int id)
         {
-            return _provider.GetOrderByID(id);
+            return _provider.GetOrderById(id);
         }
 
-        public void AddOrder(CreateDto dto)
+        public void AddOrder(Order order)
         {
-            _provider.AddOrder(dto);
+            _provider.AddOrder(order);
         }
 
-        public void UpdateStatus(UpdateDto update)
+        public void UpdateStatus(int id, Status status)
         {
-            _provider.UpdateStatus(update);
+            _provider.UpdateStatus(id, status);
         }
 
-        public IReadOnlyCollection<OrderDto> GetOnStatus(int statusId)
+        public IReadOnlyCollection<Order> GetOnStatus(int statusId)
         {
             return _provider.GetOrdersOnStatus(statusId);
         }

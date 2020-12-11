@@ -14,24 +14,24 @@ namespace Ordermanager_Logic.Collections
         }
 
 
-        public IReadOnlyCollection<CustomerDto> GetAllCustomers()
+        public IReadOnlyCollection<Customer> GetAllCustomers()
         {
             return provider.GetAllCustomers();
         }
 
-        public CustomerDto GetCustomerById(int id)
+        public Customer GetCustomerById(int id)
         {
             return provider.GetCustomerByID(id);
         }
 
-        public void AddCustomer(CustomerCreateDto customer)
+        public void AddCustomer(Customer customer)
         {
             provider.AddCustomer(customer);
         }
 
-        public void UpdateAdress(CustomerUpdateDto update)
+        public void UpdateAdress(int id, string adress)
         {
-            provider.UpdateAdress(update);
+            provider.UpdateAdress(id, adress);
         }
 
     }
