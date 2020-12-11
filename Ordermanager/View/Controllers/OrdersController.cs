@@ -102,7 +102,14 @@ namespace View.Controllers
         // GET: OrdersController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            OrderDto order = orderCollection.GetOrderById(id);
+            OrderUpdateModel update = new OrderUpdateModel();
+            {
+                update.Id = order.OrderNr;
+                update.Status = order.Status;
+
+            }
+            return View(update);
         }
 
         // POST: OrdersController/Edit/5

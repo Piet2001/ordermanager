@@ -85,7 +85,14 @@ namespace View.Controllers
         // GET: ProductController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ProductDto product = productCollection.GetProductById(id);
+            ProductUpdateModel update = new ProductUpdateModel();
+            {
+                update.Id = product.Id;
+                update.Price = product.Price;
+
+            }
+            return View(update);
         }
 
         // POST: ProductController/Edit/5
