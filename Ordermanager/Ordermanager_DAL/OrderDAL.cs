@@ -1,10 +1,9 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using Ordermanager_Logic;
+using Ordermanager_Logic.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using MySql.Data.MySqlClient;
-using Ordermanager_Logic;
-using Ordermanager_Logic.Dto;
-using Ordermanager_Logic.Interfaces;
 using static Ordermanager_DAL.Connection;
 
 namespace Ordermanager_DAL

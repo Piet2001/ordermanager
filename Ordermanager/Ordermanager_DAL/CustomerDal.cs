@@ -40,7 +40,7 @@ namespace Ordermanager_DAL
             return customers.AsReadOnly();
         }
 
-        public Customer GetCustomerByID(int id)
+        public Customer GetCustomerById(int id)
         {
             Customer customer = new Customer();
             try

@@ -1,13 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Ordermanager_Logic;
+using Ordermanager_Logic.Collections;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Ordermanager_Logic;
-using Ordermanager_Logic.Collections;
-using Ordermanager_Logic.Dto;
 using View.Models;
 
 namespace View.Controllers

@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using Ordermanager_Logic.Dto;
-using Ordermanager_Logic.Interfaces;
+﻿using Ordermanager_Logic.Interfaces;
+using System.Collections.Generic;
 
 namespace Ordermanager_Logic.Collections
 {
@@ -21,7 +20,7 @@ namespace Ordermanager_Logic.Collections
 
         public Customer GetCustomerById(int id)
         {
-            return provider.GetCustomerByID(id);
+            return provider.GetCustomerById(id);
         }
 
         public void AddCustomer(Customer customer)

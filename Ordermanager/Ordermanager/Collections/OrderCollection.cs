@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using Ordermanager_Logic.Dto;
-using Ordermanager_Logic.Interfaces;
+﻿using Ordermanager_Logic.Interfaces;
+using System.Collections.Generic;
 
 namespace Ordermanager_Logic.Collections
 {

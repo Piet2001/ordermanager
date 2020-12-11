@@ -1,8 +1,7 @@
-﻿using System;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Ordermanager_Logic;
-using Ordermanager_Logic.Dto;
 using Ordermanager_Logic.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using static Ordermanager_DAL.Connection;
@@ -38,7 +37,7 @@ namespace Ordermanager_DAL
             return products.AsReadOnly();
         }
 
-        public Product GetProductByID(int id)
+        public Product GetProductById(int id)
         {
             var product = new Product();
             try

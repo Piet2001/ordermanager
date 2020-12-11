@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ordermanager_Logic.Dto
+﻿namespace Ordermanager_Logic.Dto
 {
     public class ProductCreateDto
     {
