@@ -4,17 +4,23 @@ using Ordermanager_Logic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using static Ordermanager_DAL.Connection;
 
 namespace Ordermanager_DAL
 {
     public class CustomerManager : ICustomerProvider
     {
+        private readonly string connectionString;
+
+        public CustomerManager(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+
         public IReadOnlyCollection<Customer> GetAllCustomers()
         {
             List<Customer> customers = new List<Customer>();
 
-            using (MySqlConnection conn = Conn())
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 using (MySqlCommand query =
                     new MySqlCommand(
@@ -45,7 +51,7 @@ namespace Ordermanager_DAL
             Customer customer = new Customer();
             try
             {
-                using (MySqlConnection conn = Conn())
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
@@ -80,7 +86,7 @@ namespace Ordermanager_DAL
         {
             try
             {
-                using (MySqlConnection conn = Conn())
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
@@ -103,7 +109,7 @@ namespace Ordermanager_DAL
         {
             try
             {
-                using (MySqlConnection conn = Conn())
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();

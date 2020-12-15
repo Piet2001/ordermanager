@@ -4,19 +4,26 @@ using Ordermanager_Logic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using static Ordermanager_DAL.Connection;
 
 namespace Ordermanager_DAL
 {
     public class OrderManager : IOrderProvider
     {
+        private readonly string connectionString;
+
+        public OrderManager(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+
         public IReadOnlyCollection<Order> GetAllOrders()
         {
+
             var orders = new List<Order>();
 
             try
             {
-                using (MySqlConnection conn = Conn())
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     using (var query = new MySqlCommand(
                         @"SELECT `order`.OrderNr, product.id, product.Name, product.Price, `order`.Orderdate, `order`.DeliveryDate, 
@@ -59,7 +66,7 @@ namespace Ordermanager_DAL
             Order order = null;
             try
             {
-                using (MySqlConnection conn = Conn())
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
@@ -75,7 +82,7 @@ namespace Ordermanager_DAL
                     while (reader.Read())
                     {
                         order = new Order(
-                            
+
                             new Product(reader.GetString(1), reader.GetDouble(2)),
                             reader.GetDateTime(3),
                             reader.GetDateTime(4),
@@ -98,7 +105,7 @@ namespace Ordermanager_DAL
         {
             try
             {
-                using (MySqlConnection conn = Conn())
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
@@ -123,7 +130,7 @@ namespace Ordermanager_DAL
         {
             try
             {
-                using (MySqlConnection conn = Conn())
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
@@ -145,7 +152,7 @@ namespace Ordermanager_DAL
             var orders = new List<Order>();
             try
             {
-                using (MySqlConnection conn = Conn())
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
@@ -162,7 +169,7 @@ namespace Ordermanager_DAL
                     while (reader.Read())
                     {
                         Order order = new Order(
-                            
+
                             new Product(reader.GetString(1), reader.GetDouble(2)),
                             reader.GetDateTime(3),
                             reader.GetDateTime(4),

@@ -4,17 +4,23 @@ using Ordermanager_Logic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using static Ordermanager_DAL.Connection;
 
 namespace Ordermanager_DAL
 {
     public class ProductManager : IProductProvider
     {
+        private readonly string connectionString;
+
+        public ProductManager(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+
         public IReadOnlyCollection<Product> GetAllProducts()
         {
             List<Product> products = new List<Product>();
 
-            using (MySqlConnection conn = Conn())
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 using (MySqlCommand query = new MySqlCommand("SELECT product.Id, product.Name, product.Price FROM product Order by product.Id", conn))
                 {
@@ -42,7 +48,7 @@ namespace Ordermanager_DAL
             var product = new Product();
             try
             {
-                using (MySqlConnection conn = Conn())
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
@@ -77,7 +83,7 @@ namespace Ordermanager_DAL
         {
             try
             {
-                using (MySqlConnection conn = Conn())
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
@@ -100,7 +106,7 @@ namespace Ordermanager_DAL
         {
             try
             {
-                using (MySqlConnection conn = Conn())
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();

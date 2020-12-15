@@ -21,9 +21,9 @@ namespace View
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.Add(new ServiceDescriptor(typeof(IOrderProvider), new OrderManager()));
-            services.Add(new ServiceDescriptor(typeof(IProductProvider), new ProductManager()));
-            services.Add(new ServiceDescriptor(typeof(ICustomerProvider), new CustomerManager()));
+            services.Add(new ServiceDescriptor(typeof(IOrderProvider), new OrderManager(Configuration.GetConnectionString("DafaultDB"))));
+            services.Add(new ServiceDescriptor(typeof(IProductProvider), new ProductManager(Configuration.GetConnectionString("DafaultDB"))));
+            services.Add(new ServiceDescriptor(typeof(ICustomerProvider), new CustomerManager(Configuration.GetConnectionString("DafaultDB"))));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
