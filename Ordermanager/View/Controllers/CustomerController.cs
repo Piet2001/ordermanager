@@ -4,13 +4,19 @@ using Ordermanager_Logic.Collections;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Ordermanager_Logic.Interfaces;
 using View.Models;
 
 namespace View.Controllers
 {
     public class CustomerController : Controller
     {
-        private readonly CustomerCollection customerCollection = new CustomerCollection(new Ordermanager_DAL.CustomerDal());
+        private readonly CustomerCollection customerCollection;
+
+        public CustomerController(ICustomerProvider customer)
+        {
+            customerCollection = new CustomerCollection(customer);
+        }
 
         // GET: CustomerController
         public ActionResult Index()

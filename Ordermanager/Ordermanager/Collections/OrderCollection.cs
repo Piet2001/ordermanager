@@ -5,36 +5,36 @@ namespace Ordermanager_Logic.Collections
 {
     public class OrderCollection
     {
-        private IOrderProvider _provider;
+        private readonly IOrderProvider provider;
 
         public OrderCollection(IOrderProvider provider)
         {
-            _provider = provider;
+            this.provider = provider;
         }
 
         public IReadOnlyCollection<Order> GetAllOrders()
         {
-            return _provider.GetAllOrders();
+            return provider.GetAllOrders();
         }
 
         public Order GetOrderById(int id)
         {
-            return _provider.GetOrderById(id);
+            return provider.GetOrderById(id);
         }
 
         public void AddOrder(Order order)
         {
-            _provider.AddOrder(order);
+            provider.AddOrder(order);
         }
 
         public void UpdateStatus(int id, Status status)
         {
-            _provider.UpdateStatus(id, status);
+            provider.UpdateStatus(id, status);
         }
 
         public IReadOnlyCollection<Order> GetOnStatus(int statusId)
         {
-            return _provider.GetOrdersOnStatus(statusId);
+            return provider.GetOrdersOnStatus(statusId);
         }
     }
 }

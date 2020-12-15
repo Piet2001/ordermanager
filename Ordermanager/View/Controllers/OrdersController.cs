@@ -4,15 +4,24 @@ using Ordermanager_Logic.Collections;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Ordermanager_Logic.Interfaces;
 using View.Models;
 
 namespace View.Controllers
 {
     public class OrdersController : Controller
     {
-        private readonly OrderCollection orderCollection = new OrderCollection(new Ordermanager_DAL.OrderDal());
-        private readonly ProductCollection productCollection = new ProductCollection(new Ordermanager_DAL.ProductDal());
-        private readonly CustomerCollection customerCollection = new CustomerCollection(new Ordermanager_DAL.CustomerDal());
+        private readonly OrderCollection orderCollection;
+        private readonly ProductCollection productCollection;
+        private readonly CustomerCollection customerCollection;
+
+
+        public OrdersController(IOrderProvider order, IProductProvider product, ICustomerProvider customer)
+        {
+            orderCollection = new OrderCollection(order);
+            productCollection = new ProductCollection(product);
+            customerCollection = new CustomerCollection(customer);
+        }
 
         // GET: OrdersController
         public ActionResult Index()

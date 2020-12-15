@@ -8,7 +8,7 @@ using static Ordermanager_DAL.Connection;
 
 namespace Ordermanager_DAL
 {
-    public class CustomerDal : ICustomerProvider
+    public class CustomerManager : ICustomerProvider
     {
         public IReadOnlyCollection<Customer> GetAllCustomers()
         {

@@ -8,7 +8,7 @@ using static Ordermanager_DAL.Connection;
 
 namespace Ordermanager_DAL
 {
-    public class ProductDal : IProductProvider
+    public class ProductManager : IProductProvider
     {
         public IReadOnlyCollection<Product> GetAllProducts()
         {

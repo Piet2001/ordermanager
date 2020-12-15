@@ -8,7 +8,7 @@ using static Ordermanager_DAL.Connection;
 
 namespace Ordermanager_DAL
 {
-    public class OrderDal : IOrderProvider
+    public class OrderManager : IOrderProvider
     {
         public IReadOnlyCollection<Order> GetAllOrders()
         {
@@ -20,7 +20,8 @@ namespace Ordermanager_DAL
                 {
                     using (var query = new MySqlCommand(
                         @"SELECT `order`.OrderNr, product.id, product.Name, product.Price, `order`.Orderdate, `order`.DeliveryDate, 
-                        customer.Name, customer.Adress, `order`.`Status` FROM `order`, product, customer 
+                        customer.Name, customer.Adress, `order`.`Status` 
+                        FROM `order`, product, customer 
                         WHERE order.ProductID = product.ID 
                         AND order.CustomerID = customer.ID
                         Order by `order`.OrderNr",
@@ -31,13 +32,13 @@ namespace Ordermanager_DAL
                         var reader = query.ExecuteReader();
                         while (reader.Read())
                         {
-                            Order order = new Order(
-                                reader.GetInt32(0),
+                            var order = new Order(
                                 new Product(reader.GetInt32(1), reader.GetString(2), reader.GetDouble(3)),
                                 reader.GetDateTime(4),
                                 reader.GetDateTime(5),
                                 new Customer(reader.GetString(6), reader.GetString(7)),
-                                (Status)reader.GetInt32(8)
+                                (Status)reader.GetInt32(8),
+                                reader.GetInt32(0)
                             );
                             orders.Add(order);
                         }
@@ -55,7 +56,7 @@ namespace Ordermanager_DAL
 
         public Order GetOrderById(int id)
         {
-            Order order = new Order();
+            Order order = null;
             try
             {
                 using (MySqlConnection conn = Conn())
@@ -74,12 +75,13 @@ namespace Ordermanager_DAL
                     while (reader.Read())
                     {
                         order = new Order(
-                            reader.GetInt32(0),
+                            
                             new Product(reader.GetString(1), reader.GetDouble(2)),
                             reader.GetDateTime(3),
                             reader.GetDateTime(4),
                             new Customer(reader.GetString(5), reader.GetString(6)),
-                            (Status)reader.GetInt32(7)
+                            (Status)reader.GetInt32(7),
+                            reader.GetInt32(0)
                         );
                     }
                 }
@@ -160,12 +162,13 @@ namespace Ordermanager_DAL
                     while (reader.Read())
                     {
                         Order order = new Order(
-                            reader.GetInt32(0),
+                            
                             new Product(reader.GetString(1), reader.GetDouble(2)),
                             reader.GetDateTime(3),
                             reader.GetDateTime(4),
                             new Customer(reader.GetString(5), reader.GetString(6)),
-                            (Status)reader.GetInt32(7)
+                            (Status)reader.GetInt32(7),
+                            reader.GetInt32(0)
                         );
                         orders.Add(order);
                     }

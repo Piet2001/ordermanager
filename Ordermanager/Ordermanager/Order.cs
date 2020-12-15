@@ -11,29 +11,17 @@ namespace Ordermanager_Logic
         public Customer Customer {get; }
         public Product Product {get; }
 
-        public Order(int orderNumber, Product product, DateTime orderDate, DateTime deliveryDate, Customer customer, Status status)
+        public Order(Product product, DateTime orderDate, DateTime deliveryDate, Customer customer, Status status, int orderNumber = 0)
         {
+            this.OrderDate = orderDate;
+            this.DeliveryDate = deliveryDate;
+            this.Status = status;
+            this.Customer = customer;
+            this.Product = product;
             this.OrderNumber = orderNumber;
-            this.OrderDate = orderDate;
-            this.DeliveryDate = deliveryDate;
-            this.Status = status;
-            this.Customer = customer;
-            this.Product = product;
-        }
-        public Order(Product product, DateTime orderDate, DateTime deliveryDate, Customer customer, Status status)
-        {
-            this.OrderDate = orderDate;
-            this.DeliveryDate = deliveryDate;
-            this.Status = status;
-            this.Customer = customer;
-            this.Product = product;
         }
 
-        public Order()
-        {
-        }
-
-        public void UpdateStatus(Status newStatus)
+        internal void UpdateStatus(Status newStatus)
         {
             this.Status = newStatus;
         }

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Ordermanager_DAL;
+using Ordermanager_Logic.Interfaces;
 
 namespace View
 {
@@ -19,6 +21,9 @@ namespace View
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.Add(new ServiceDescriptor(typeof(IOrderProvider), new OrderManager()));
+            services.Add(new ServiceDescriptor(typeof(IProductProvider), new ProductManager()));
+            services.Add(new ServiceDescriptor(typeof(ICustomerProvider), new CustomerManager()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

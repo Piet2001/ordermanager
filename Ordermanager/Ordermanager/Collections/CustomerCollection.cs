@@ -5,7 +5,7 @@ namespace Ordermanager_Logic.Collections
 {
     public class CustomerCollection
     {
-        private ICustomerProvider provider;
+        private readonly ICustomerProvider provider;
 
         public CustomerCollection(ICustomerProvider provider)
         {

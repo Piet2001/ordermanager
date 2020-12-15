@@ -4,13 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Ordermanager_Logic;
+using Ordermanager_Logic.Interfaces;
 using View.Models;
 
 namespace View.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductCollection productCollection = new ProductCollection(new Ordermanager_DAL.ProductDal());
+        private readonly ProductCollection productCollection;
+
+        public ProductController(IProductProvider product)
+        {
+            productCollection = new ProductCollection(product);
+        }
 
         // GET: ProductController
         public ActionResult Index()
