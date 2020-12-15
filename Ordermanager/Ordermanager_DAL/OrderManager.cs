@@ -28,9 +28,9 @@ namespace Ordermanager_DAL
                     using (var query = new MySqlCommand(
                         @"SELECT `order`.OrderNr, product.id, product.Name, product.Price, `order`.Orderdate, `order`.DeliveryDate, 
                         customer.Name, customer.Adress, `order`.`Status` 
-                        FROM `order`, product, customer 
-                        WHERE order.ProductID = product.ID 
-                        AND order.CustomerID = customer.ID
+                        FROM `order`
+                        INNER JOIN product ON order.ProductID = product.ID 
+                        INNER JOIN customer ON order.CustomerID = customer.ID
                         Order by `order`.OrderNr",
                         conn))
                     {
@@ -72,17 +72,16 @@ namespace Ordermanager_DAL
                     conn.Open();
                     query.CommandText =
                         @"SELECT `order`.OrderNr, product.Name, product.Price, `order`.Orderdate, `order`.DeliveryDate, customer.Name, customer.Adress, `order`.`Status` 
-                                    FROM `order`, product, customer 
-                                    WHERE order.OrderNr = @OrderID 
-                                    AND order.ProductID = product.ID 
-                                    AND order.CustomerID = customer.ID";
+                                    FROM `order`                                    
+                                    INNER JOIN product ON order.ProductID = product.ID 
+                                    INNER JOIN customer ON order.CustomerID = customer.ID
+                                    WHERE order.OrderNr = @OrderID ";
                     query.Parameters.AddWithValue("OrderID", id);
 
                     var reader = query.ExecuteReader();
                     while (reader.Read())
                     {
                         order = new Order(
-
                             new Product(reader.GetString(1), reader.GetDouble(2)),
                             reader.GetDateTime(3),
                             reader.GetDateTime(4),
@@ -158,10 +157,10 @@ namespace Ordermanager_DAL
                     conn.Open();
                     query.CommandText =
                         @"SELECT `order`.OrderNr, product.Name, product.Price, `order`.Orderdate, `order`.DeliveryDate, customer.Name, customer.Adress, `order`.`Status` 
-                    FROM `order`, product, customer 
-                    WHERE order.ProductID = product.ID 
-                    AND order.CustomerID = customer.ID 
-                    AND Status = @Status
+                    FROM `order` 
+                    INNER JOIN product ON order.ProductID = product.ID 
+                    INNER JOIN customer ON order.CustomerID = customer.ID 
+                    WHERE Status = @Status
                     Order by `order`.OrderNr";
                     query.Parameters.AddWithValue("Status", statusId);
 
@@ -169,7 +168,6 @@ namespace Ordermanager_DAL
                     while (reader.Read())
                     {
                         Order order = new Order(
-
                             new Product(reader.GetString(1), reader.GetDouble(2)),
                             reader.GetDateTime(3),
                             reader.GetDateTime(4),
