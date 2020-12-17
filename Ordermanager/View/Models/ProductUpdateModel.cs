@@ -1,8 +1,10 @@
-﻿namespace View.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace View.Models
 {
     public class ProductUpdateModel
     {
         public int Id { get; set; }
-        public decimal Price { get; set; }
+        public string Price { get; set; }
     }
 }

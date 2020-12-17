@@ -94,7 +94,7 @@ namespace View.Controllers
             ProductUpdateModel update = new ProductUpdateModel();
             {
                 update.Id = product.Id;
-                update.Price = product.Price;
+                update.Price = Convert.ToString(product.Price);
 
             }
             return View(update);
@@ -107,7 +107,7 @@ namespace View.Controllers
         {
             try
             {
-                _productCollection.UpdatePrice(model.Id, model.Price);
+                _productCollection.UpdatePrice(model.Id, Convert.ToDecimal(model.Price));
                 return RedirectToAction(nameof(Index));
             }
             catch
