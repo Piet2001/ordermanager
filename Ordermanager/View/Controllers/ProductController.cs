@@ -73,16 +73,20 @@ namespace View.Controllers
         {
             try
             {
+                if (model.Price.Contains("."))
+                    model.Price = model.Price.Replace(".",",");
+                
                 Product product = new Product
                 (
                     model.Name,
-                    model.Price
+                    Convert.ToDecimal(model.Price)
                 );
                 _productCollection.AddProduct(product);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
+                ViewBag.message = "Controleer of invoer in format 1,23 staat!";
                 return View();
             }
         }
@@ -97,6 +101,7 @@ namespace View.Controllers
                 update.Price = Convert.ToString(product.Price);
 
             }
+            //ViewBag.message = " ";
             return View(update);
         }
 
@@ -107,11 +112,15 @@ namespace View.Controllers
         {
             try
             {
+                if (model.Price.Contains("."))
+                    model.Price = model.Price.Replace(".", ",");
+
                 _productCollection.UpdatePrice(model.Id, Convert.ToDecimal(model.Price));
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
+                ViewBag.message = "Controleer of invoer in format 1,23 staat!";
                 return View();
             }
         }
