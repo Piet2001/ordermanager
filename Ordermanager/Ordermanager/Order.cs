@@ -10,8 +10,9 @@ namespace Ordermanager_Logic
         public Status Status {get; }
         public Customer Customer {get; }
         public Product Product {get; }
+        public int Amount { get; }
 
-        public Order(Product product, DateTime orderDate, DateTime deliveryDate, Customer customer, Status status, int orderNumber = 0)
+        public Order(Product product, int amount, DateTime orderDate, DateTime deliveryDate, Customer customer, Status status, int orderNumber = 0)
         {
             OrderDate = orderDate;
             DeliveryDate = deliveryDate;
@@ -19,6 +20,7 @@ namespace Ordermanager_Logic
             Customer = customer;
             Product = product;
             OrderNumber = orderNumber;
+            Amount = amount;
         }
 
         //public override string ToString()

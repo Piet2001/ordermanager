@@ -23,6 +23,9 @@
                 @Html.DisplayNameFor(model => model.Product)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.OrderDate)
             </th>
             <th>
@@ -46,6 +49,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Product)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.OrderDate)

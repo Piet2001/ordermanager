@@ -26,7 +26,7 @@ namespace Ordermanager_DAL
                 using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     using (var query = new MySqlCommand(
-                        @"SELECT `order`.OrderNr, product.id, product.Name, product.Price, `order`.Orderdate, `order`.DeliveryDate, 
+                        @"SELECT `order`.OrderNr, product.id, product.Name, product.Price, `order`.Amount, `order`.Orderdate, `order`.DeliveryDate, 
                         customer.Name, customer.Adress, `order`.`Status` 
                         FROM `order`
                         INNER JOIN product ON order.ProductID = product.ID 
@@ -41,10 +41,11 @@ namespace Ordermanager_DAL
                         {
                             var order = new Order(
                                 new Product(reader.GetString(2), reader.GetDouble(3), reader.GetInt32(1)),
-                                reader.GetDateTime(4),
+                                reader.GetInt32(4),
                                 reader.GetDateTime(5),
-                                new Customer(reader.GetString(6), reader.GetString(7)),
-                                (Status)reader.GetInt32(8),
+                                reader.GetDateTime(6),
+                                new Customer(reader.GetString(7), reader.GetString(8)),
+                                (Status)reader.GetInt32(9),
                                 reader.GetInt32(0)
                             );
                             orders.Add(order);
@@ -71,11 +72,11 @@ namespace Ordermanager_DAL
                     var query = conn.CreateCommand();
                     conn.Open();
                     query.CommandText =
-                        @"SELECT `order`.OrderNr, product.Name, product.Price, `order`.Orderdate, `order`.DeliveryDate, customer.Name, customer.Adress, `order`.`Status` 
+                        @"SELECT `order`.OrderNr, product.Name, product.Price, `order`.Amount, `order`.Orderdate, `order`.DeliveryDate, customer.Name, customer.Adress, `order`.`Status` 
                                     FROM `order`                                    
                                     INNER JOIN product ON order.ProductID = product.ID 
                                     INNER JOIN customer ON order.CustomerID = customer.ID
-                                    WHERE order.OrderNr = @OrderID ";
+                                    WHERE order.OrderNr = @OrderID";
                     query.Parameters.AddWithValue("OrderID", id);
 
                     var reader = query.ExecuteReader();
@@ -83,10 +84,11 @@ namespace Ordermanager_DAL
                     {
                         order = new Order(
                             new Product(reader.GetString(1), reader.GetDouble(2)),
-                            reader.GetDateTime(3),
+                            reader.GetInt32(3),
                             reader.GetDateTime(4),
-                            new Customer(reader.GetString(5), reader.GetString(6)),
-                            (Status)reader.GetInt32(7),
+                            reader.GetDateTime(5),
+                            new Customer(reader.GetString(6), reader.GetString(7)),
+                            (Status)reader.GetInt32(8),
                             reader.GetInt32(0)
                         );
                     }
@@ -109,9 +111,10 @@ namespace Ordermanager_DAL
                     var query = conn.CreateCommand();
                     conn.Open();
                     query.CommandText =
-                        @"INSERT INTO `ordermanager`.`order` (`ProductID`, `OrderDate`, `DeliveryDate`, `CustomerID`, `Status`) 
-                    VALUES (@ProductID, @OrderDate, @DeliveryDate, @CustomerID, @Status);";
+                        @"INSERT INTO `ordermanager`.`order` (`ProductID`, `Amount`, `OrderDate`, `DeliveryDate`, `CustomerID`, `Status`) 
+                    VALUES (@ProductID, @Amount, @OrderDate, @DeliveryDate, @CustomerID, @Status);";
                     query.Parameters.AddWithValue("ProductID", order.Product.Id);
+                    query.Parameters.AddWithValue("Amount", order.Amount);
                     query.Parameters.AddWithValue("OrderDate", order.OrderDate);
                     query.Parameters.AddWithValue("DeliveryDate", order.DeliveryDate);
                     query.Parameters.AddWithValue("CustomerID", order.Customer.Id);
@@ -156,7 +159,7 @@ namespace Ordermanager_DAL
                     var query = conn.CreateCommand();
                     conn.Open();
                     query.CommandText =
-                        @"SELECT `order`.OrderNr, product.Name, product.Price, `order`.Orderdate, `order`.DeliveryDate, customer.Name, customer.Adress, `order`.`Status` 
+                        @"SELECT `order`.OrderNr, product.Name, product.Price, `order`.Amount, `order`.Orderdate, `order`.DeliveryDate, customer.Name, customer.Adress, `order`.`Status` 
                     FROM `order` 
                     INNER JOIN product ON order.ProductID = product.ID 
                     INNER JOIN customer ON order.CustomerID = customer.ID 
@@ -169,10 +172,11 @@ namespace Ordermanager_DAL
                     {
                         Order order = new Order(
                             new Product(reader.GetString(1), reader.GetDouble(2)),
-                            reader.GetDateTime(3),
+                            reader.GetInt32(3),
                             reader.GetDateTime(4),
-                            new Customer(reader.GetString(5), reader.GetString(6)),
-                            (Status)reader.GetInt32(7),
+                            reader.GetDateTime(5),
+                            new Customer(reader.GetString(6), reader.GetString(7)),
+                            (Status)reader.GetInt32(8),
                             reader.GetInt32(0)
                         );
                         orders.Add(order);

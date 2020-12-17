@@ -38,6 +38,7 @@ namespace View.Controllers
                 {
                     OrderNr = order.OrderNumber,
                     Product = order.Product.Name,
+                    Amount = order.Amount,
                     OrderDate = order.OrderDate,
                     DeliveryDate = order.DeliveryDate,
                     Customer = order.Customer.Name,
@@ -62,6 +63,7 @@ namespace View.Controllers
                 orderview.CustomerAdress = order.Customer.Adress;
                 orderview.Product = order.Product.Name;
                 orderview.ProductPrice = order.Product.Price;
+                orderview.Amount = order.Amount;
                 orderview.Status = order.Status;
             }
             catch (Exception e)
@@ -90,6 +92,7 @@ namespace View.Controllers
             {
                 Order order = new Order(
                     _productCollection.GetProductById(model.Product),
+                    model.Amount,
                     model.OrderDate,
                     model.DeliveryDate,
                     _customerCollection.GetCustomerById(model.Customer),
@@ -160,6 +163,7 @@ namespace View.Controllers
                 {
                     OrderNr = order.OrderNumber,
                     Product = order.Product.Name,
+                    Amount = order.Amount,
                     OrderDate = order.OrderDate,
                     DeliveryDate = order.DeliveryDate,
                     Customer = order.Customer.Name,

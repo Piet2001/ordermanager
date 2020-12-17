@@ -8,6 +8,7 @@ namespace View.Models
         public int OrderNr { get; set; }
         public string Product { get; set; }
         public double ProductPrice { get; set; }
+        public int Amount { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime DeliveryDate { get; set; }
         public string Customer { get; set; }
