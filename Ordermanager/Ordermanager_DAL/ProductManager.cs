@@ -32,7 +32,7 @@ namespace Ordermanager_DAL
                         Product product = new Product
                         (
                             reader.GetString(1),
-                            reader.GetDouble(2),
+                            reader.GetDecimal(2),
                             reader.GetInt32(0)
 
                         );
@@ -64,7 +64,7 @@ namespace Ordermanager_DAL
                         product = new Product
                         (
                             reader.GetString(1),
-                            reader.GetDouble(2),
+                            reader.GetDecimal(2),
                             reader.GetInt32(0)
 
                         );
@@ -102,7 +102,7 @@ namespace Ordermanager_DAL
             }
         }
 
-        public void UpdatePrice(int id, double price)
+        public void UpdatePrice(int id, decimal price)
         {
             try
             {

@@ -40,7 +40,7 @@ namespace Ordermanager_DAL
                         while (reader.Read())
                         {
                             var order = new Order(
-                                new Product(reader.GetString(2), reader.GetDouble(3), reader.GetInt32(1)),
+                                new Product(reader.GetString(2), reader.GetDecimal(3), reader.GetInt32(1)),
                                 reader.GetInt32(4),
                                 reader.GetDateTime(5),
                                 reader.GetDateTime(6),
@@ -83,7 +83,7 @@ namespace Ordermanager_DAL
                     while (reader.Read())
                     {
                         order = new Order(
-                            new Product(reader.GetString(1), reader.GetDouble(2)),
+                            new Product(reader.GetString(1), reader.GetDecimal(2)),
                             reader.GetInt32(3),
                             reader.GetDateTime(4),
                             reader.GetDateTime(5),
@@ -171,7 +171,7 @@ namespace Ordermanager_DAL
                     while (reader.Read())
                     {
                         Order order = new Order(
-                            new Product(reader.GetString(1), reader.GetDouble(2)),
+                            new Product(reader.GetString(1), reader.GetDecimal(2)),
                             reader.GetInt32(3),
                             reader.GetDateTime(4),
                             reader.GetDateTime(5),

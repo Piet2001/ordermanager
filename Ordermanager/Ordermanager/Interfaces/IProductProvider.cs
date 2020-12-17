@@ -7,6 +7,6 @@ namespace Ordermanager_Logic.Interfaces
         IReadOnlyCollection<Product> GetAllProducts();
         Product GetProductById(int id);
         void AddProduct(Product product);
-        void UpdatePrice(int id, double price);
+        void UpdatePrice(int id, decimal price);
     }
 }

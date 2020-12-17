@@ -26,7 +26,7 @@ namespace Ordermanager_Logic.Collections
             _provider.AddProduct(product);
         }
 
-        public void UpdatePrice(int id, double price)
+        public void UpdatePrice(int id, decimal price)
         {
             _provider.UpdatePrice(id, price);
         }
