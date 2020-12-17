@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace View.Models
+﻿namespace View.Models
 {
     public class ProductUpdateModel
     {
