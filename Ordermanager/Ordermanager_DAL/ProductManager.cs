@@ -31,9 +31,9 @@ namespace Ordermanager_DAL
                     {
                         Product product = new Product
                         (
-                            reader.GetInt32(0),
                             reader.GetString(1),
-                            reader.GetDouble(2)
+                            reader.GetDouble(2),
+                            reader.GetInt32(0)
 
                         );
                         products.Add(product);
@@ -45,7 +45,7 @@ namespace Ordermanager_DAL
 
         public Product GetProductById(int id)
         {
-            var product = new Product();
+            Product product = null;
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -63,9 +63,9 @@ namespace Ordermanager_DAL
                     {
                         product = new Product
                         (
-                            reader.GetInt32(0),
                             reader.GetString(1),
-                            reader.GetDouble(2)
+                            reader.GetDouble(2),
+                            reader.GetInt32(0)
 
                         );
                     }

@@ -40,7 +40,7 @@ namespace Ordermanager_DAL
                         while (reader.Read())
                         {
                             var order = new Order(
-                                new Product(reader.GetInt32(1), reader.GetString(2), reader.GetDouble(3)),
+                                new Product(reader.GetString(2), reader.GetDouble(3), reader.GetInt32(1)),
                                 reader.GetDateTime(4),
                                 reader.GetDateTime(5),
                                 new Customer(reader.GetString(6), reader.GetString(7)),

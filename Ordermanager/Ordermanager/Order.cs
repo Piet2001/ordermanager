@@ -21,22 +21,17 @@ namespace Ordermanager_Logic
             this.OrderNumber = orderNumber;
         }
 
-        internal void UpdateStatus(Status newStatus)
-        {
-            this.Status = newStatus;
-        }
+        //public override string ToString()
+        //{
+        //    string result;
+        //    result = "OrderNummer: " + OrderNumber + "\n";
+        //    result += "OrderDate: " + OrderDate + "\n";
+        //    result += "DeliveryDate: " + DeliveryDate + "\n";
+        //    result += "Status: " + Status + "\n";
+        //    result += "Customer: \n" + Customer + "\n";
+        //    result += "Product: \n" + Product + "\n";
 
-        public override string ToString()
-        {
-            string result;
-            result = "OrderNummer: " + OrderNumber + "\n";
-            result += "OrderDate: " + OrderDate + "\n";
-            result += "DeliveryDate: " + DeliveryDate + "\n";
-            result += "Status: " + Status + "\n";
-            result += "Customer: \n" + Customer + "\n";
-            result += "Product: \n" + Product + "\n";
-
-            return result;
-        }
+        //    return result;
+        //}
     }
 }

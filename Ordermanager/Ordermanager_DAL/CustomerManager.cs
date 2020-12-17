@@ -33,9 +33,9 @@ namespace Ordermanager_DAL
                     {
                         Customer customer = new Customer
                         (
-                            reader.GetInt32(0),
                             reader.GetString(1),
-                            reader.GetString(2)
+                            reader.GetString(2),
+                            reader.GetInt32(0)
 
                         );
                         customers.Add(customer);
@@ -48,7 +48,7 @@ namespace Ordermanager_DAL
 
         public Customer GetCustomerById(int id)
         {
-            Customer customer = new Customer();
+            Customer customer = null;
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -66,9 +66,9 @@ namespace Ordermanager_DAL
                     {
                         customer = new Customer
                         (
-                            reader.GetInt32(0),
                             reader.GetString(1),
-                            reader.GetString(2)
+                            reader.GetString(2),
+                            reader.GetInt32(0)
 
                         );
                     }
