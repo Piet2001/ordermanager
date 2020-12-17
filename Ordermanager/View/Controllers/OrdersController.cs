@@ -11,22 +11,22 @@ namespace View.Controllers
 {
     public class OrdersController : Controller
     {
-        private readonly OrderCollection orderCollection;
-        private readonly ProductCollection productCollection;
-        private readonly CustomerCollection customerCollection;
+        private readonly OrderCollection _orderCollection;
+        private readonly ProductCollection _productCollection;
+        private readonly CustomerCollection _customerCollection;
 
 
         public OrdersController(IOrderProvider order, IProductProvider product, ICustomerProvider customer)
         {
-            orderCollection = new OrderCollection(order);
-            productCollection = new ProductCollection(product);
-            customerCollection = new CustomerCollection(customer);
+            _orderCollection = new OrderCollection(order);
+            _productCollection = new ProductCollection(product);
+            _customerCollection = new CustomerCollection(customer);
         }
 
         // GET: OrdersController
         public ActionResult Index()
         {
-            IReadOnlyCollection<Order> orders = orderCollection.GetAllOrders();
+            IReadOnlyCollection<Order> orders = _orderCollection.GetAllOrders();
             if (orders.Count == 0)
             {
                 throw new Exception("Geen gegevens gevonden.");
@@ -54,7 +54,7 @@ namespace View.Controllers
             OrderViewModel orderview = new OrderViewModel();
             try
             {
-                Order order = orderCollection.GetOrderById(id);
+                Order order = _orderCollection.GetOrderById(id);
                 orderview.OrderNr = order.OrderNumber;
                 orderview.OrderDate = order.OrderDate;
                 orderview.DeliveryDate = order.DeliveryDate;
@@ -76,8 +76,8 @@ namespace View.Controllers
         public ActionResult Create()
         {
             OrderCreateModel model = new OrderCreateModel();
-            model.Products = productCollection.GetAllProducts();
-            model.Customers = customerCollection.GetAllCustomers();
+            model.Products = _productCollection.GetAllProducts();
+            model.Customers = _customerCollection.GetAllCustomers();
             return View(model);
         }
 
@@ -89,14 +89,14 @@ namespace View.Controllers
             try
             {
                 Order order = new Order(
-                    productCollection.GetProductById(model.Product),
+                    _productCollection.GetProductById(model.Product),
                     model.OrderDate,
                     model.DeliveryDate,
-                    customerCollection.GetCustomerById(model.Customer),
+                    _customerCollection.GetCustomerById(model.Customer),
                     model.Status
                     );
 
-                orderCollection.AddOrder(order);
+                _orderCollection.AddOrder(order);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -108,7 +108,7 @@ namespace View.Controllers
         // GET: OrdersController/Edit/5
         public ActionResult Edit(int id)
         {
-            Order order = orderCollection.GetOrderById(id);
+            Order order = _orderCollection.GetOrderById(id);
             OrderUpdateModel update = new OrderUpdateModel();
             {
                 update.Id = order.OrderNumber;
@@ -125,7 +125,7 @@ namespace View.Controllers
         {
             try
             {
-                orderCollection.UpdateStatus(update.Id, update.Status);
+                _orderCollection.UpdateStatus(update.Id, update.Status);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -143,7 +143,7 @@ namespace View.Controllers
         // GET: OrdersController/Status/5
         public ActionResult Status(int id)
         {
-            IReadOnlyCollection<Order> orders = orderCollection.GetOnStatus(id);
+            IReadOnlyCollection<Order> orders = _orderCollection.GetOnStatus(id);
             if (id > 0 && id < 6)
             {
                 ViewBag.Message = "Status " + id + "(" + orders.Count + ")";

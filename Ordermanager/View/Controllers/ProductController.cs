@@ -11,17 +11,17 @@ namespace View.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductCollection productCollection;
+        private readonly ProductCollection _productCollection;
 
         public ProductController(IProductProvider product)
         {
-            productCollection = new ProductCollection(product);
+            _productCollection = new ProductCollection(product);
         }
 
         // GET: ProductController
         public ActionResult Index()
         {
-            IReadOnlyCollection<Product> products = productCollection.GetAllProducts();
+            IReadOnlyCollection<Product> products = _productCollection.GetAllProducts();
             if (products.Count == 0)
             {
                 throw new Exception("Geen gegevens gevonden.");
@@ -47,7 +47,7 @@ namespace View.Controllers
             ProductViewModel productView = new ProductViewModel();
             try
             {
-                Product product = productCollection.GetProductById(id);
+                Product product = _productCollection.GetProductById(id);
                 productView.Id = product.Id;
                 productView.Name = product.Name;
                 productView.Price = product.Price;
@@ -78,7 +78,7 @@ namespace View.Controllers
                     model.Name,
                     model.Price
                 );
-                productCollection.AddProduct(product);
+                _productCollection.AddProduct(product);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -90,7 +90,7 @@ namespace View.Controllers
         // GET: ProductController/Edit/5
         public ActionResult Edit(int id)
         {
-            Product product = productCollection.GetProductById(id);
+            Product product = _productCollection.GetProductById(id);
             ProductUpdateModel update = new ProductUpdateModel();
             {
                 update.Id = product.Id;
@@ -107,7 +107,7 @@ namespace View.Controllers
         {
             try
             {
-                productCollection.UpdatePrice(model.Id, model.Price);
+                _productCollection.UpdatePrice(model.Id, model.Price);
                 return RedirectToAction(nameof(Index));
             }
             catch

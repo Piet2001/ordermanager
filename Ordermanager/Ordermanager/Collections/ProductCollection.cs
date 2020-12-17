@@ -5,30 +5,30 @@ namespace Ordermanager_Logic.Collections
 {
     public class ProductCollection
     {
-        private readonly IProductProvider provider;
+        private readonly IProductProvider _provider;
 
         public ProductCollection(IProductProvider provider)
         {
-            this.provider = provider;
+            _provider = provider;
         }
         public IReadOnlyCollection<Product> GetAllProducts()
         {
-            return provider.GetAllProducts();
+            return _provider.GetAllProducts();
         }
 
         public Product GetProductById(int id)
         {
-            return provider.GetProductById(id);
+            return _provider.GetProductById(id);
         }
 
         public void AddProduct(Product product)
         {
-            provider.AddProduct(product);
+            _provider.AddProduct(product);
         }
 
         public void UpdatePrice(int id, double price)
         {
-            provider.UpdatePrice(id, price);
+            _provider.UpdatePrice(id, price);
         }
     }
 }

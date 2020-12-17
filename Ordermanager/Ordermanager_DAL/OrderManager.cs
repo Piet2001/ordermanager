@@ -9,11 +9,11 @@ namespace Ordermanager_DAL
 {
     public class OrderManager : IOrderProvider
     {
-        private readonly string connectionString;
+        private readonly string _connectionString;
 
         public OrderManager(string connectionString)
         {
-            this.connectionString = connectionString;
+            _connectionString = connectionString;
         }
 
         public IReadOnlyCollection<Order> GetAllOrders()
@@ -23,7 +23,7 @@ namespace Ordermanager_DAL
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     using (var query = new MySqlCommand(
                         @"SELECT `order`.OrderNr, product.id, product.Name, product.Price, `order`.Orderdate, `order`.DeliveryDate, 
@@ -66,7 +66,7 @@ namespace Ordermanager_DAL
             Order order = null;
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
@@ -104,7 +104,7 @@ namespace Ordermanager_DAL
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
@@ -129,7 +129,7 @@ namespace Ordermanager_DAL
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
@@ -151,7 +151,7 @@ namespace Ordermanager_DAL
             var orders = new List<Order>();
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();

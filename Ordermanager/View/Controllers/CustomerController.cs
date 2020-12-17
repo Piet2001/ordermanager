@@ -11,17 +11,17 @@ namespace View.Controllers
 {
     public class CustomerController : Controller
     {
-        private readonly CustomerCollection customerCollection;
+        private readonly CustomerCollection _customerCollection;
 
         public CustomerController(ICustomerProvider customer)
         {
-            customerCollection = new CustomerCollection(customer);
+            _customerCollection = new CustomerCollection(customer);
         }
 
         // GET: CustomerController
         public ActionResult Index()
         {
-            IReadOnlyCollection<Customer> customers = customerCollection.GetAllCustomers();
+            IReadOnlyCollection<Customer> customers = _customerCollection.GetAllCustomers();
             if (customers.Count == 0)
             {
                 throw new Exception("Geen gegevens gevonden.");
@@ -47,7 +47,7 @@ namespace View.Controllers
             CustomerViewModel customerView = new CustomerViewModel();
             try
             {
-                Customer customer = customerCollection.GetCustomerById(id);
+                Customer customer = _customerCollection.GetCustomerById(id);
                 customerView.Id = customer.Id;
                 customerView.Name = customer.Name;
                 customerView.Adress = customer.Adress;
@@ -79,7 +79,7 @@ namespace View.Controllers
                    model.Adress
 
                 );
-                customerCollection.AddCustomer(customer);
+                _customerCollection.AddCustomer(customer);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -91,7 +91,7 @@ namespace View.Controllers
         // GET: CustomerController/Edit/5
         public ActionResult Edit(int id)
         {
-            Customer customer = customerCollection.GetCustomerById(id);
+            Customer customer = _customerCollection.GetCustomerById(id);
             CustomerUpdateModel update = new CustomerUpdateModel();
             {
                 update.Id = customer.Id;
@@ -108,7 +108,7 @@ namespace View.Controllers
         {
             try
             {
-                customerCollection.UpdateAdress(model.Id, model.Adress);
+                _customerCollection.UpdateAdress(model.Id, model.Adress);
                 return RedirectToAction(nameof(Index));
             }
             catch

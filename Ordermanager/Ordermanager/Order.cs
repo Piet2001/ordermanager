@@ -7,18 +7,18 @@ namespace Ordermanager_Logic
         public int OrderNumber {get; }
         public DateTime OrderDate {get; }
         public DateTime DeliveryDate {get; }
-        public Status Status {get;private set;}
+        public Status Status {get; }
         public Customer Customer {get; }
         public Product Product {get; }
 
         public Order(Product product, DateTime orderDate, DateTime deliveryDate, Customer customer, Status status, int orderNumber = 0)
         {
-            this.OrderDate = orderDate;
-            this.DeliveryDate = deliveryDate;
-            this.Status = status;
-            this.Customer = customer;
-            this.Product = product;
-            this.OrderNumber = orderNumber;
+            OrderDate = orderDate;
+            DeliveryDate = deliveryDate;
+            Status = status;
+            Customer = customer;
+            Product = product;
+            OrderNumber = orderNumber;
         }
 
         //public override string ToString()

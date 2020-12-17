@@ -5,32 +5,32 @@ namespace Ordermanager_Logic.Collections
 {
     public class CustomerCollection
     {
-        private readonly ICustomerProvider provider;
+        private readonly ICustomerProvider _provider;
 
         public CustomerCollection(ICustomerProvider provider)
         {
-            this.provider = provider;
+            _provider = provider;
         }
 
 
         public IReadOnlyCollection<Customer> GetAllCustomers()
         {
-            return provider.GetAllCustomers();
+            return _provider.GetAllCustomers();
         }
 
         public Customer GetCustomerById(int id)
         {
-            return provider.GetCustomerById(id);
+            return _provider.GetCustomerById(id);
         }
 
         public void AddCustomer(Customer customer)
         {
-            provider.AddCustomer(customer);
+            _provider.AddCustomer(customer);
         }
 
         public void UpdateAdress(int id, string adress)
         {
-            provider.UpdateAdress(id, adress);
+            _provider.UpdateAdress(id, adress);
         }
 
     }

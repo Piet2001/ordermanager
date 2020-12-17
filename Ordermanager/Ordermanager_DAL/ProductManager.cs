@@ -9,18 +9,18 @@ namespace Ordermanager_DAL
 {
     public class ProductManager : IProductProvider
     {
-        private readonly string connectionString;
+        private readonly string _connectionString;
 
         public ProductManager(string connectionString)
         {
-            this.connectionString = connectionString;
+            _connectionString = connectionString;
         }
 
         public IReadOnlyCollection<Product> GetAllProducts()
         {
             List<Product> products = new List<Product>();
 
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = new MySqlConnection(_connectionString))
             {
                 using (MySqlCommand query = new MySqlCommand("SELECT product.Id, product.Name, product.Price FROM product Order by product.Id", conn))
                 {
@@ -48,7 +48,7 @@ namespace Ordermanager_DAL
             Product product = null;
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
@@ -83,7 +83,7 @@ namespace Ordermanager_DAL
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
@@ -106,7 +106,7 @@ namespace Ordermanager_DAL
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();

@@ -9,18 +9,18 @@ namespace Ordermanager_DAL
 {
     public class CustomerManager : ICustomerProvider
     {
-        private readonly string connectionString;
+        private readonly string _connectionString;
 
         public CustomerManager(string connectionString)
         {
-            this.connectionString = connectionString;
+            _connectionString = connectionString;
         }
 
         public IReadOnlyCollection<Customer> GetAllCustomers()
         {
             List<Customer> customers = new List<Customer>();
 
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            using (MySqlConnection conn = new MySqlConnection(_connectionString))
             {
                 using (MySqlCommand query =
                     new MySqlCommand(
@@ -51,7 +51,7 @@ namespace Ordermanager_DAL
             Customer customer = null;
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
@@ -86,7 +86,7 @@ namespace Ordermanager_DAL
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
@@ -109,7 +109,7 @@ namespace Ordermanager_DAL
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     var query = conn.CreateCommand();
                     conn.Open();
