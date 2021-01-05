@@ -24,7 +24,7 @@ namespace Ordermanager_DAL
             {
                 using (MySqlCommand query =
                     new MySqlCommand(
-                        "SELECT customer.id, customer.Name, customer.Adress FROM customer Order by Customer.Id", conn))
+                        "SELECT customer.id, customer.Name, customer.Adress FROM customer Order by Customer.Name", conn))
                 {
                     conn.Open();
 
