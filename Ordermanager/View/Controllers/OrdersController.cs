@@ -80,6 +80,8 @@ namespace View.Controllers
             OrderCreateModel model = new OrderCreateModel();
             model.Products = _productCollection.GetAllProducts();
             model.Customers = _customerCollection.GetAllCustomers();
+            model.DeliveryDate = DateTime.Today;
+            model.OrderDate = DateTime.Today;
             return View(model);
         }
 
