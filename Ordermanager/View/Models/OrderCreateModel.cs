@@ -9,7 +9,9 @@ namespace View.Models
     {
         public int Product { get; set; }
         public int Amount { get; set; }
+        [DataType(DataType.Date)]
         public DateTime OrderDate { get; set; }
+        [DataType(DataType.Date)]
         public DateTime DeliveryDate { get; set; }
         public int Customer { get; set; }
         [EnumDataType(typeof(Status))]
