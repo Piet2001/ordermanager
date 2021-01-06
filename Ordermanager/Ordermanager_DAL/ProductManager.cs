@@ -16,7 +16,7 @@ namespace Ordermanager_DAL
             _connectionString = connectionString;
         }
 
-        public IReadOnlyCollection<Product> GetAllProducts()
+        public List<Product> GetAllProducts()
         {
             List<Product> products = new List<Product>();
 
@@ -40,7 +40,7 @@ namespace Ordermanager_DAL
                     }
                 }
             }
-            return products.AsReadOnly();
+            return products;
         }
 
         public Product GetProductById(int id)

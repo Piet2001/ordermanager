@@ -13,7 +13,7 @@ namespace Ordermanager_Logic.Collections
         }
         public IReadOnlyCollection<Product> GetAllProducts()
         {
-            return _provider.GetAllProducts();
+            return _provider.GetAllProducts().AsReadOnly();
         }
 
         public Product GetProductById(int id)

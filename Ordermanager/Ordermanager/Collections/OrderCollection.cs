@@ -14,7 +14,7 @@ namespace Ordermanager_Logic.Collections
 
         public IReadOnlyCollection<Order> GetAllOrders()
         {
-            return _provider.GetAllOrders();
+            return _provider.GetAllOrders().AsReadOnly();
         }
 
         public Order GetOrderById(int id)

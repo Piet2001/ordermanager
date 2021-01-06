@@ -15,7 +15,7 @@ namespace Ordermanager_Logic.Collections
 
         public IReadOnlyCollection<Customer> GetAllCustomers()
         {
-            return _provider.GetAllCustomers();
+            return _provider.GetAllCustomers().AsReadOnly();
         }
 
         public Customer GetCustomerById(int id)

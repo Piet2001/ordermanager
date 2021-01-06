@@ -16,7 +16,7 @@ namespace Ordermanager_DAL
             _connectionString = connectionString;
         }
 
-        public IReadOnlyCollection<Customer> GetAllCustomers()
+        public List<Customer> GetAllCustomers()
         {
             List<Customer> customers = new List<Customer>();
 
@@ -43,7 +43,7 @@ namespace Ordermanager_DAL
                 }
             }
 
-            return customers.AsReadOnly();
+            return customers;
         }
 
         public Customer GetCustomerById(int id)

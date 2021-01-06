@@ -16,7 +16,7 @@ namespace Ordermanager_DAL
             _connectionString = connectionString;
         }
 
-        public IReadOnlyCollection<Order> GetAllOrders()
+        public List<Order> GetAllOrders()
         {
 
             var orders = new List<Order>();
@@ -59,7 +59,7 @@ namespace Ordermanager_DAL
             }
 
 
-            return orders.AsReadOnly();
+            return orders;
         }
 
         public Order GetOrderById(int id)
