@@ -1,5 +1,6 @@
 ﻿using Ordermanager_Logic;
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace View.Models
@@ -8,6 +9,7 @@ namespace View.Models
     {
         public int OrderNr { get; set; }
         public string Product { get; set; }
+        [DisplayName("Price")]
         public decimal ProductPrice { get; set; }
         public int Amount { get; set; }
         [DataType(DataType.Date)]
@@ -15,6 +17,7 @@ namespace View.Models
         [DataType(DataType.Date)]
         public DateTime DeliveryDate { get; set; }
         public string Customer { get; set; }
+        [DisplayName("Adress")]
         public string CustomerAdress { get; set; }
         public Status Status { get; set; }
     }
