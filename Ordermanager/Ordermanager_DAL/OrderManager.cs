@@ -10,7 +10,6 @@ namespace Ordermanager_DAL
     public class OrderManager : IOrderProvider
     {
         private readonly string _connectionString;
-
         public OrderManager(string connectionString)
         {
             _connectionString = connectionString;
