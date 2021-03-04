@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ordermanager\Ordermanager_Logic.csproj" />
+    <ProjectReference Include="..\Ordermanager_DAL\Ordermanager_DAL.csproj" />
+  </ItemGroup>
+
+</Project>
